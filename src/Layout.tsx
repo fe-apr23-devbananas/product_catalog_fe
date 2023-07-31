@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 export const Layout: FC = () => (
   <>
-    <header>Header</header>
+    <header>header</header>
     <Outlet />
     <footer>footer</footer>
   </>
