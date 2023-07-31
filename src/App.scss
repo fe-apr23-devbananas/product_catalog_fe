@@ -1,4 +1,22 @@
-.App {
-  text-align: center;
-  background-color: red;
+@import './components/Header/Header.scss';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Mont', sans-serif;
+  color: #89939a;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+img,
+a,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
 }

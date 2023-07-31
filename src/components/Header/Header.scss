@@ -1,0 +1,166 @@
+$border-color-grey: #e2e6e9;
+$header-height-mobile-tablet: 48px;
+$header-height-desktop: 64px;
+
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+.header {
+  &__top {
+    display: flex;
+    position: sticky;
+    align-items: center;
+    justify-content: space-between;
+    height: $header-height-mobile-tablet;
+    padding: 13px 0 13px 16px;
+
+    background-color: #fff;
+    box-shadow: 0 1px 0 $border-color-grey;
+
+    @include onDesktop {
+      height: $header-height-desktop;
+      padding: 18px 0 18px 24px;
+    }
+  }
+
+  &__logo {
+    @include onTablet {
+      margin-right: 32px;
+    }
+
+    @include onDesktop {
+      margin-right: 48px;
+    }
+
+    &--image {
+      width: 64px;
+      height: 22px;
+
+      @include onDesktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__button {
+    height: 48px;
+    width: 48px;
+    border-left: 1px solid $border-color-grey;
+    border-bottom: 2px solid transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include onDesktop {
+      height: 64px;
+      width: 64px;
+    }
+
+    &--active {
+      border-bottom-color: #0f0f11;
+    }
+
+    &--burger-menu {
+      display: flex;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &--fav {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+    }
+
+    &--cart {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+    }
+
+    &--image {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  @include onTablet {
+    margin-right: auto;
+    display: flex;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__item {
+    margin-right: 32px;
+
+    height: $header-height-mobile-tablet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @include onDesktop {
+      margin-right: $header-height-desktop;
+      height: 64px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    padding: calc(($header-height-mobile-tablet - 14px) / 2) 0;
+    transition: color 1s;
+    border-bottom: 2px solid transparent;
+
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    @include onDesktop {
+      padding: calc(($header-height-desktop - 14px) / 2) 0;
+    }
+
+    &:hover {
+      position: relative;
+      color: #0f0f11;
+    }
+
+    &.is-active {
+      border-bottom: 2px solid #0f0f11;
+    }
+  }
+}
