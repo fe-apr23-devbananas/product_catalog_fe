@@ -3,6 +3,9 @@ import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { HomePage, PhonesPage, TabletsPage, AccessoriesPage } from './pages';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
+
 
 export const App = () => {
   return (
@@ -12,8 +15,9 @@ export const App = () => {
           <Route index element={<HomePage />} />
           <Route path="phones" element={<PhonesPage />} />
           <Route path="tablets" element={<TabletsPage />} />
-          <Route path="tablets" element={<AccessoriesPage />} />
-          <Route path="*" element={<div> Not Found </div>} />
+          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="not-found" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundRedirect />} />
         </Route>
       </Routes>
     </div>
