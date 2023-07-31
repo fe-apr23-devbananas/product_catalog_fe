@@ -3,7 +3,7 @@ import { Blurhash } from 'react-blurhash';
 
 export default function ImgComponent({ src }) {
 	const [imgLoaded, setImgLoaded] = useState(false);
-  const imgSize = '320px';
+	const imgSize = '320px';
 
 	useEffect(() => {
 		const img = new Image();
@@ -15,7 +15,7 @@ export default function ImgComponent({ src }) {
 
 	return (
 		<div>
-			<div style={{ display: imgLoaded ? 'none' : 'inline', }}>
+			<div style={{ display: imgLoaded ? 'none' : 'inline' }}>
 				<Blurhash
 					hash='LuP%9hxt%Lxtt7j@j@oe_LRkM|Rk'
 					width={imgSize}
@@ -26,15 +26,15 @@ export default function ImgComponent({ src }) {
 				/>
 			</div>
 
-				<img
-					src={src}
-					alt='Page Not Found'
-          style={{
-            display: !imgLoaded ? 'none' : 'inline',
-            width: imgSize,
-            height: imgSize,
-          }}
-				/>
+			<img
+				src={src}
+				alt='Page Not Found'
+				style={{
+					display: !imgLoaded ? 'none' : 'inline',
+					width: imgSize,
+					height: imgSize,
+				}}
+			/>
 		</div>
 	);
 }
