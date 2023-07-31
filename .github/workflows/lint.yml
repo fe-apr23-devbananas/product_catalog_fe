@@ -1,4 +1,4 @@
-name: Test
+name: Lint
 
 on:
   pull_request:
@@ -13,10 +13,16 @@ jobs:
         node-version: [16.x]
 
     steps:
-      # - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm fix-style
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '16.x'
+
+        - name: Install dependencies
+          run: npm install
+
+        - name: Fix code style
+          run: npm run fix-style
