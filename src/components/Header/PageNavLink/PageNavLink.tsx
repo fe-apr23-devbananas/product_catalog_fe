@@ -5,13 +5,17 @@ import cn from 'classnames';
 type Props = {
   to: string;
   text: string;
+  isBurgerMenuOpen: boolean;
 };
 
-export const PageNavLink: React.FC<Props> = ({ to, text }) => (
+export const PageNavLink: React.FC<Props> = ({ to, text, isBurgerMenuOpen }) => (
   <NavLink
     to={to}
-    className={({ isActive }) => cn('nav__link', { 'is-active': isActive })}
+    className={({ isActive }) =>
+      cn('nav__link', { 'is-active': isActive }, { 'burger-menu__link': isBurgerMenuOpen })
+    }
   >
     {text}
   </NavLink>
 );
+

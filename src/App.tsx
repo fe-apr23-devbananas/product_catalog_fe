@@ -5,6 +5,7 @@ import { Layout } from './Layout';
 import { HomePage, PhonesPage, TabletsPage, AccessoriesPage } from './pages';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
+import { FavoritesPage } from './pages/Favorites';
 
 export const App = () => {
   return (
@@ -15,6 +16,7 @@ export const App = () => {
           <Route path="phones" element={<PhonesPage />} />
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
           <Route path="not-found" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundRedirect />} />
         </Route>

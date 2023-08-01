@@ -1,0 +1,71 @@
+@import '../../../styles/utils/variables';
+@import '../../../styles/mixins';
+
+.nav {
+  display: none;
+
+  @include onTablet {
+    margin-right: auto;
+    display: block;
+    height: 100%;
+  }
+
+  &--burger {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &--burger {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    margin-right: 32px;
+
+    height: $header-height-mobile-tablet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &--burger {
+      margin: 0;
+    }
+
+    @include onDesktop {
+      margin-right: $header-height-desktop;
+      height: 64px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    padding: calc(($header-height-mobile-tablet - 15px) / 2) 0;
+    transition: color 1s;
+    border-bottom: 2px solid transparent;
+
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    @include onDesktop {
+      padding: calc(($header-height-desktop - 15px) / 2) 0;
+    }
+
+    &.is-active {
+      border-bottom: 2px solid $primary-color;
+      color: $primary-color;
+    }
+  }
+}
