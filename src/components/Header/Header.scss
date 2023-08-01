@@ -1,30 +1,25 @@
-$border-color-grey: #e2e6e9;
-$header-height-mobile-tablet: 48px;
-$header-height-desktop: 64px;
-
-@mixin onTablet {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-
-@mixin onDesktop {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
+@import '../../styles/utils/variables';
+@import '../../styles/mixins';
 
 .header {
+  &--burger-open {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   &__top {
     display: flex;
-    position: sticky;
+
     align-items: center;
     justify-content: space-between;
     height: $header-height-mobile-tablet;
     padding: 13px 0 13px 16px;
 
     background-color: #fff;
-    box-shadow: 0 1px 0 $border-color-grey;
+    border-bottom: 1px solid $elements-color;
 
     @include onDesktop {
       height: $header-height-desktop;
@@ -57,10 +52,12 @@ $header-height-desktop: 64px;
   }
 
   &__button {
+    border: none;
     height: 48px;
     width: 48px;
-    border-left: 1px solid $border-color-grey;
-    border-bottom: 2px solid transparent;
+    border-left: 1px solid $elements-color;
+    border-bottom: 1px solid $elements-color;
+    background-color: #fff;
 
     display: flex;
     align-items: center;
@@ -72,14 +69,23 @@ $header-height-desktop: 64px;
     }
 
     &--active {
-      border-bottom-color: #0f0f11;
+      border-bottom-color: $primary-color;
     }
 
-    &--burger-menu {
+    &--burger {
       display: flex;
+
+      background-image: url('../../assets/icons/burgerMenu.svg');
+
+      background-repeat: no-repeat;
+      background-position: center;
 
       @include onTablet {
         display: none;
+      }
+
+      &_open {
+        background-image: url('../../assets/icons/Close.svg');
       }
     }
 
@@ -106,61 +112,4 @@ $header-height-desktop: 64px;
   }
 }
 
-.nav {
-  display: none;
 
-  @include onTablet {
-    margin-right: auto;
-    display: flex;
-    height: 100%;
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-
-  &__item {
-    margin-right: 32px;
-
-    height: $header-height-mobile-tablet;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    @include onDesktop {
-      margin-right: $header-height-desktop;
-      height: 64px;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  &__link {
-    padding: calc(($header-height-mobile-tablet - 14px) / 2) 0;
-    transition: color 1s;
-    border-bottom: 2px solid transparent;
-
-    font-weight: 800;
-    font-size: 12px;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-
-    @include onDesktop {
-      padding: calc(($header-height-desktop - 14px) / 2) 0;
-    }
-
-    &:hover {
-      position: relative;
-      color: #0f0f11;
-    }
-
-    &.is-active {
-      border-bottom: 2px solid #0f0f11;
-    }
-  }
-}
