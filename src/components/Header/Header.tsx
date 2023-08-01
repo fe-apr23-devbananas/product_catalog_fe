@@ -4,7 +4,7 @@ import { HeaderButton } from './HeaderButton';
 import { Link } from 'react-router-dom';
 import { MainNavigation } from './MainNavigation';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu';
-import Logo from '../../images/headerImages/Logo.svg';
+import Logo from '../../assets/icons/Logo.svg';
 
 export const Header: React.FC = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
