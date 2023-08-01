@@ -6,7 +6,6 @@ import { HomePage, PhonesPage, TabletsPage, AccessoriesPage } from './pages';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
 
-
 export const App = () => {
   return (
     <div className={'App'}>

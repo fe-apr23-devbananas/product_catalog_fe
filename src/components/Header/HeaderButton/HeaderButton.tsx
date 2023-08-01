@@ -1,28 +1,29 @@
+/* eslint-disable indent */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import Fav from '../../../images/headerImages/Favourites.svg';
-import Cart from '../../../images/headerImages/shoppingCart.svg';
-import Burger from '../../../images/headerImages/burgerMenu.svg';
-import Close from '../../../images/headerImages/Close.svg';
-
+import Fav from '../../../assets/icons/Favourites.svg';
+import Cart from '../../../assets/icons/shoppingCart.svg';
+import Burger from '../../../assets/icons/burgerMenu.svg';
+import Close from '../../../assets/icons/Close.svg';
+//FIX INDENT
 type Props = {
   type: string;
 };
 
 const prepareLink = (type: string) => {
   switch (type) {
-  case 'fav':
-    return ['/fav', Fav];
+    case 'fav':
+      return ['/fav', Fav];
 
-  case 'burger-menu':
-    return ['/burger-menu', Burger];
+    case 'burger-menu':
+      return ['/burger-menu', Burger];
 
-  case 'close':
-    return ['/close', Close];
+    case 'close':
+      return ['/close', Close];
 
-  default:
-    return ['/cart', Cart];
+    default:
+      return ['/cart', Cart];
   }
 };
 
