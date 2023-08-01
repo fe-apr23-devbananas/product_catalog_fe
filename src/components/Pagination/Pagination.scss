@@ -1,0 +1,33 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/placeholders';
+
+.Pagination {
+  display: flex;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    @extend %buttons;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray-icons-placeholders;
+    transition: border $default-transition;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--selected {
+      color: $white-color;
+      background-color: $gray-primary;
+      border-color: $gray-primary;
+    }
+  }
+}
