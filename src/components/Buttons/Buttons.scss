@@ -1,0 +1,28 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+
+  &__buy {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 40px;
+    border-radius: 48px;
+    background: #8369e0;
+  
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s linear 0s;
+  
+    margin-right: 18px;
+  }
+  
+  &__favorite:hover {
+    border-color: #000;
+    transform: scale(1.15);
+  }
+}

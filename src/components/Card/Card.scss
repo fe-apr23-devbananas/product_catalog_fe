@@ -1,0 +1,84 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 32px;
+  max-width: 287px;
+  border: 1px solid #b8b6b6;
+  background: #fff;
+  
+  &:hover {
+    border-color: #0F0F11;
+  }
+  
+  &__top {
+    display: block;
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    max-height: 130px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    text-align: left;
+    font-size: 14px;
+    color: #0f0f11;
+    font-weight: 600;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    display: flex;
+    margin-bottom: 8px;
+  }
+
+  &__price-actual {
+    text-align: left;
+    color: #0f0f11;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px; 
+    margin-bottom: 8px;
+  }
+  
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: #89939A;
+    margin-bottom: 8px;
+  }
+  
+  &__descriptions {
+    margin-bottom: 8px;
+    padding: 8px 0;
+  }
+  
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  &__description-left {
+    color: #89939A;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__description-right {
+    color: #0F0F11;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+@media(min-width: 768px) {
+  .card__photo {
+    max-height: 196px;
+  }
+}
