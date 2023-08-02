@@ -2,44 +2,42 @@ import React from 'react';
 import './Footer.scss';
 import logo from '../../assets/icons/Logo.svg';
 import arrow from '../../assets/icons/arrow.svg';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer__container">
-        <img src={logo} alt="Nice gadgets" className="logo-img" />
-        <div className="footer__link">
-          <a
-            href="https://github.com/fe-apr23-devbananas/product_catalog_fe"
-            className="footer__nav-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://gmail.com"
-            className="footer__nav-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contacts
-          </a>
-          <a
-            href="#"
-            className="footer__nav-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Rights
-          </a>
+        <div className="footer__container__logo">
+          <Link to="/">
+            <img src={logo} alt="nice gadgets" />
+          </Link>
         </div>
-        <div className="footer__button-box">
-          <div className="footer__button-text">Back to top</div>
-          <button className="footer__button"></button>
-          <div className="footer__icon">
-            <img src={arrow} alt="arrow" className="arrow-img" />
-          </div>
+
+        <div className="footer__container__links">
+          <Link to="https://github.com/fe-apr23-devbananas" className="link">
+            github
+          </Link>
+          <Link to="/contacts" className="link">
+            contacts
+          </Link>
+          <Link to="/rights" className="link">
+            rights
+          </Link>
+        </div>
+
+        <div className="footer__container__up" onClick={() => scrollToTop()}>
+          <span className="up__text">Back to top</span>
+          <button className="button__up">
+            <img src={arrow} alt="go up button" />
+          </button>
         </div>
       </div>
     </footer>
