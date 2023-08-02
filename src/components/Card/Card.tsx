@@ -1,7 +1,13 @@
 import React, { FC } from 'react';
 import { Buttons } from '../Buttons/Buttons';
+import { Product } from '../../types/Product';
+import { Phone } from '../../types/Phone';
 
-export const Card: FC = () => {
+interface Props {
+  product: Product | Phone;
+}
+
+export const Card: FC<Props> = ({ product }) => {
   return (
     <article className="card">
       <a className="card__top" href="#">
@@ -12,26 +18,27 @@ export const Card: FC = () => {
           alt="wdwdw"
         />
         <h3 className="card__title">
-          Apple iPhone 14 Pro 128GB Silver <br /> (MQ023)
+          {/* Apple iPhone 14 Pro 128GB Silver <br /> (MQ023) */}
+          {product.name}
         </h3>
         <div className="card__price">
-          <p className="card__price-actual">$999</p>
-          {/* <p className='card__price-full'>$932</p> */}
+          <p className="card__price-actual">$932</p>
+          <p className="card__price-full">$999</p>
         </div>
       </a>
       <div className="card__line"></div>
       <ul className="card__descriptions">
         <li className="card__description">
           <p className="card__description-left">Screen</p>
-          <p className="card__description-right">6.1” OLED</p>
+          <p className="card__description-right">{product.screen}</p>
         </li>
         <li className="card__description">
           <p className="card__description-left">Capacity</p>
-          <p className="card__description-right">128 GB</p>
+          <p className="card__description-right">{product.capacity}</p>
         </li>
         <li className="card__description">
           <p className="card__description-left">RAM</p>
-          <p className="card__description-right">6 GB</p>
+          <p className="card__description-right">{product.ram}</p>
         </li>
       </ul>
       <Buttons />
