@@ -8,14 +8,21 @@ type Props = {
   isBurgerMenuOpen: boolean;
 };
 
-export const PageNavLink: React.FC<Props> = ({ to, text, isBurgerMenuOpen }) => (
+export const PageNavLink: React.FC<Props> = ({
+  to,
+  text,
+  isBurgerMenuOpen
+}) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
-      cn('nav__link', { 'is-active': isActive }, { 'burger-menu__link': isBurgerMenuOpen })
+      cn(
+        'nav__link',
+        { 'is-active': isActive },
+        { 'burger-menu__link': isBurgerMenuOpen }
+      )
     }
   >
     {text}
   </NavLink>
 );
-

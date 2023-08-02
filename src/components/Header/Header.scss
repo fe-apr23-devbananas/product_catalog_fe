@@ -1,5 +1,5 @@
 @import '../../styles/utils/variables';
-@import '../../styles/mixins';
+@import '../../styles/utils/mixins';
 
 .header {
   &--burger-open {
@@ -111,5 +111,3 @@
     }
   }
 }
-
-

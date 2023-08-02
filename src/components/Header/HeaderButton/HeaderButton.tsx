@@ -20,7 +20,7 @@ const prepareLink = (type: string) => {
 
 export const HeaderButton: React.FC<Props> = ({ type }) => {
   const linkData = prepareLink(type);
-  
+
   return (
     <NavLink
       to={linkData[0]}
@@ -29,10 +29,10 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
           'header__button',
           { 'header__button--active': isActive },
           { 'header__button--fav': type === 'fav' },
-          { 'header__button--cart': type === 'cart' },
+          { 'header__button--cart': type === 'cart' }
         )
       }
-    > 
+    >
       <img src={linkData[1]} alt="button" className="header__button--image" />
     </NavLink>
   );
