@@ -26,10 +26,9 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className={cn(
-        'header',
-        {'header--burger-open': isBurgerMenuOpen}
-      )}>
+      <header
+        className={cn('header', { 'header--burger-open': isBurgerMenuOpen })}
+      >
         <div className="header__top">
           <Link to="./" className="header__logo">
             <img
@@ -39,20 +38,18 @@ export const Header: React.FC = () => {
             />
           </Link>
 
-          <MainNavigation isBurgerMenuOpen={isBurgerMenuOpen}/>
+          <MainNavigation isBurgerMenuOpen={isBurgerMenuOpen} />
 
           <div className="header__icons">
             <HeaderButton type="fav" />
             <HeaderButton type="cart" />
             <button
               type="button"
-              className={cn(
-                'header__button',
-                'header__button--burger',
-                { 'header__button--burger_open': isBurgerMenuOpen }
-              )}
+              className={cn('header__button', 'header__button--burger', {
+                'header__button--burger_open': isBurgerMenuOpen
+              })}
               onClick={() => {
-                setIsBurgerMenuOpen(prev => !prev);
+                setIsBurgerMenuOpen((prev) => !prev);
               }}
             />
           </div>
@@ -60,20 +57,20 @@ export const Header: React.FC = () => {
         {isBurgerMenuOpen && (
           <aside
             className={cn('burger-menu', {
-              'burger-menu--active': isBurgerMenuOpen,
+              'burger-menu--active': isBurgerMenuOpen
             })}
           >
-            <nav className='nav nav--burger'>
-              <ul className='nav__list nav__list--burger'>
+            <nav className="nav nav--burger">
+              <ul className="nav__list nav__list--burger">
                 {navigationItems.map((item) => (
                   <li
                     onClick={() => setIsBurgerMenuOpen(false)}
-                    className='nav__item  nav__item--burger'
+                    className="nav__item  nav__item--burger"
                     key={item.to}
                   >
-                    <PageNavLink 
-                      to={item.to} 
-                      text={item.text} 
+                    <PageNavLink
+                      to={item.to}
+                      text={item.text}
                       isBurgerMenuOpen={isBurgerMenuOpen}
                     />
                   </li>
@@ -84,26 +81,32 @@ export const Header: React.FC = () => {
             <div className="burger-menu__bottom">
               <NavLink
                 to={'/favorites'}
-                className={({ isActive}) => cn(
-                  'header__button',
-                  'burger-menu__bottom--button',
-                  { 'header__button--active': isActive }
-                )}
-                onClick={() => setIsBurgerMenuOpen(false)}
-              >
-                <img src={Favs} alt="button" className="header__button--image" />
-              </NavLink>
-              <NavLink
-                to={'/cart'}
-                className={({ isActive}) => cn(
-                  'header__button',
-                  'burger-menu__bottom--button',
-                  { 'header__button--active': isActive }
-                )}
+                className={({ isActive }) =>
+                  cn('header__button', 'burger-menu__bottom--button', {
+                    'header__button--active': isActive
+                  })
+                }
                 onClick={() => setIsBurgerMenuOpen(false)}
               >
                 <img
-                  src={Cart} alt="button" className="header__button--image"
+                  src={Favs}
+                  alt="button"
+                  className="header__button--image"
+                />
+              </NavLink>
+              <NavLink
+                to={'/cart'}
+                className={({ isActive }) =>
+                  cn('header__button', 'burger-menu__bottom--button', {
+                    'header__button--active': isActive
+                  })
+                }
+                onClick={() => setIsBurgerMenuOpen(false)}
+              >
+                <img
+                  src={Cart}
+                  alt="button"
+                  className="header__button--image"
                 />
               </NavLink>
             </div>

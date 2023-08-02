@@ -1,7 +1,8 @@
-@import '../../styles/mixins';
+@import '../../styles/utils/mixins';
 
 .footer {
   display: flex;
+  // position: relative;
   justify-content: center;
   font-family: 'Mont-Bold';
   background: #ffffff;

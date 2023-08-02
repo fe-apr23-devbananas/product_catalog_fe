@@ -3,9 +3,11 @@
   flex-direction: column;
   justify-content: space-around;
   padding: 32px;
-  max-width: 287px;
+  min-width: 229px;
+  max-width: 288px;
   border: 1px solid #b8b6b6;
   background: #fff;
+  border-radius: 8px;
 
   &:hover {
     border-color: #0f0f11;
