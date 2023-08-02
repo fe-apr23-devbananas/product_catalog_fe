@@ -5,7 +5,9 @@
   padding: 32px;
   max-width: 287px;
   border: 1px solid #b8b6b6;
+  border-radius: 8px;
   background: #fff;
+  transition: all 0.3s linear 0s;
 
   &:hover {
     border-color: #0f0f11;
@@ -44,6 +46,13 @@
     font-weight: 800;
     line-height: 31px;
     margin-bottom: 8px;
+    margin-right: 8px;
+  }
+
+  &__price-full {
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: line-through;
   }
 
   &__line {
