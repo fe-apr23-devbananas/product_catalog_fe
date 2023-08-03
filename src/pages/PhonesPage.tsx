@@ -6,7 +6,7 @@ export const PhonesPage: FC = () => (
     <Catalog />
   </main>
 );
-// import { Card } from '../components/Card/Card';
+// import { Catalog } from '../components/Catalog';
 // import { Phone } from '../types/Phone';
 // import { useFetchData } from '../hooks/useFetchData';
 
@@ -18,7 +18,7 @@ export const PhonesPage: FC = () => (
 //       {isLoading ? (
 //         <p>Loading...</p>
 //       ) : (
-//         phones.map((phone: Phone) => <Card key={phone.id} product={phone} />)
+//         <Catalog phones={phones} /> // Pass the phones data as a prop to the Catalog component
 //       )}
 //     </div>
 //   );
