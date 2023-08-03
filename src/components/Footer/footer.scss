@@ -1,5 +1,6 @@
 @import '../../styles/utils/mixins';
 @import '../../styles/utils/variables';
+@import '../../styles/utils/fonts';
 
 .footer {
   display: flex;
@@ -7,6 +8,7 @@
   align-items: center;
   justify-content: center;
   background-color: $white-color;
+  font-family: 'Mont-Bold', sans-serif;
 
   &__container {
     max-width: 1200px;
@@ -34,7 +36,8 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      font-size: 14px;
+      font-family: 'Mont-Regular', sans-serif;
+      font-size: 12px;
       flex: 1;
       gap: 16px;
       color: $secondary-color;

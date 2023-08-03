@@ -1,34 +1,8 @@
 @import './styles/utils/fonts';
+@import './styles/utils/normalize';
 
 body {
-  font-family: 'Mont', sans-serif;
-  margin: 0;
+  font-family: 'Mont-Regular', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-ul,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

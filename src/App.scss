@@ -1,26 +1,7 @@
-@import './components/Header/Header.scss';
-@import './components/Card/Card.scss';
-@import './components/Buttons/Buttons.scss';
-
 @import './styles/utils/mixins';
 @import './styles/utils/variables';
 
 * {
   box-sizing: border-box;
   color: #89939a;
-}
-
-html,
-body,
-h1,
-h2,
-h3,
-img,
-a,
-p,
-ul {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
 }
