@@ -26,16 +26,15 @@ const phone: Product = {
 
 export const Catalog: React.FC = () => {
   return (
-    <div className="container">
-      <div className="catalog-grid">
-        <Card product={phone} />
-        <Card product={phone} />
-        <Card product={phone} />
-        <Card product={phone} />
-        {/* {phones.map((phone) => (
+    <div className="catalog-grid">
+      <Card product={phone} />
+      <Card product={phone} />
+      <Card product={phone} />
+      <Card product={phone} />
+      <Card product={phone} />
+      {/* {phones.map((phone) => (
           <Card key={phone.id} phone={phone} />
         ))}*/}
-      </div>
     </div>
   );
 };
