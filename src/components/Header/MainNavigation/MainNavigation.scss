@@ -2,7 +2,6 @@
 @import '../../../styles/utils/mixins';
 @import '../../../styles/utils/placeholders';
 
-
 .nav {
   display: none;
 
@@ -66,7 +65,7 @@
     }
 
     &:hover {
-      color:$primary-color
+      color: $primary-color;
     }
 
     &.is-active {

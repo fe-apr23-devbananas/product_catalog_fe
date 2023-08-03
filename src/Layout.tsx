@@ -8,7 +8,7 @@ export const Layout: FC = () => (
   <>
     <Header />
     <main className="page">
-      <div className="page__container"> 
+      <div className="page__container">
         <Outlet />
       </div>
     </main>
