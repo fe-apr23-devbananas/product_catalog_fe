@@ -1,40 +1,60 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
+import type { CartItem } from '../../types/CartItem';
 
-//EXTREMELY RAW
-
-// Define a type for the slice state
 interface CartState {
-  value: number;
+  cartList: CartItem[];
 }
 
-// Define the initial state using that type
 const initialState: CartState = {
-  value: 0
+  cartList: JSON.parse(localStorage.getItem('cart') || '') || []
 };
 
 export const cartSlice = createSlice({
-  name: 'counter',
-  // `createSlice` will infer the state type from the `initialState` argument
+  name: 'cart',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    addItem: (state, action: PayloadAction<string>) => {
+      const itemId = action.payload;
+      const item = { id: itemId, amount: 1 };
+      const cart = [...state.cartList];
+      const hasItem = cart.find((item) => item.id === itemId);
+
+      if (hasItem) {
+        cart.push(item);
+        state.cartList = cart;
+        localStorage.setItem('cart', JSON.stringify(state.cartList));
+      }
     },
-    decrement: (state) => {
-      state.value -= 1;
+    deleteItem: (state, action: PayloadAction<string>) => {
+      const itemId = action.payload;
+      const cart = [...state.cartList];
+      state.cartList = cart.filter((item) => item.id !== itemId);
+      localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+    changeAmount: (state, action: PayloadAction<[string, '+' | '-']>) => {
+      const [itemId, sign] = action.payload;
+      const cart = [...state.cartList];
+      state.cartList = cart.map((item) => {
+        if (item.id === itemId) {
+          item.amount = sign === '+' ? item.amount + 1 : item.amount - 1;
+        }
+
+        return item;
+      });
+      localStorage.setItem('cart', JSON.stringify(state.cartList));
+    },
+    clearCart: (state) => {
+      state.cartList = [];
+      localStorage.setItem('cart', JSON.stringify(state.cartList));
     }
   }
 });
 
-export const { increment, decrement, incrementByAmount } = cartSlice.actions;
+export const { addItem, deleteItem, changeAmount, clearCart } =
+  cartSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
-export const selectCart = (state: RootState) => state.cart.value;
+export const selectCart = (state: RootState) => state.cart.cartList;
 
 export default cartSlice.reducer;
