@@ -1,7 +1,7 @@
-@import "mixins";
+@import 'mixins';
 
 %h1 {
-  font-family: Mont-Bold, "Helvetica Neue", sans-serif;
+  font-family: Mont-Bold, 'Helvetica Neue', sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 800;
@@ -9,7 +9,7 @@
   letter-spacing: -0.01em;
 
   @include onTablet {
-    font-family: Mont-Bold, "Helvetica Neue", sans-serif;
+    font-family: Mont-Bold, 'Helvetica Neue', sans-serif;
     font-size: 48px;
     line-height: 56px;
     font-style: normal;
@@ -19,14 +19,14 @@
 }
 
 %h2 {
-  font-family: Mont-Bold, "Helvetica Neue", sans-serif;
+  font-family: Mont-Bold, 'Helvetica Neue', sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 800;
   line-height: 31px;
 
   @include onTablet {
-    font-family: Mont-Bold, "Helvetica Neue", sans-serif;
+    font-family: Mont-Bold, 'Helvetica Neue', sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 800;
@@ -36,14 +36,14 @@
 }
 
 %h3 {
-  font-family: Mont-SemiBold, "Helvetica Neue", sans-serif;
+  font-family: Mont-SemiBold, 'Helvetica Neue', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 26px;
 
   @include onTablet {
-    font-family: Mont-Bold, "Helvetica Neue", sans-serif;
+    font-family: Mont-Bold, 'Helvetica Neue', sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 800;
@@ -52,14 +52,14 @@
 }
 
 %h4 {
-  font-family: Mont-SemiBold, "Helvetica Neue", sans-serif;
+  font-family: Mont-SemiBold, 'Helvetica Neue', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
 
   @include onTablet {
-    font-family: Mont-SemiBold, "Helvetica Neue", sans-serif;
+    font-family: Mont-SemiBold, 'Helvetica Neue', sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 800;
@@ -68,7 +68,7 @@
 }
 
 %uppercase {
-  font-family: Mont-Bold, "Helvetica Neue", sans-serif;
+  font-family: Mont-Bold, 'Helvetica Neue', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -78,7 +78,7 @@
 }
 
 %buttons {
-  font-family: Mont-SemiBold, "Helvetica Neue", sans-serif;
+  font-family: Mont-SemiBold, 'Helvetica Neue', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -86,7 +86,7 @@
 }
 
 %body-text {
-  font-family: Mont-Regular, "Helvetica Neue", sans-serif;
+  font-family: Mont-Regular, 'Helvetica Neue', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -94,7 +94,7 @@
 }
 
 %small-text {
-  font-family: Mont-SemiBold, "Helvetica Neue", sans-serif;
+  font-family: Mont-SemiBold, 'Helvetica Neue', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
