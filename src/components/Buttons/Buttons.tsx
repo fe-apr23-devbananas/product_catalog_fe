@@ -1,4 +1,5 @@
 import { Button, IconButton } from '@mui/material';
+import './Buttons.scss';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import React, { FC } from 'react';
 
