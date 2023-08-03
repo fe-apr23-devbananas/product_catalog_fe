@@ -6,6 +6,7 @@ import { HomePage, PhonesPage, TabletsPage, AccessoriesPage } from './pages';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
 import { FavoritesPage } from './pages/Favorites';
+import { CartPage } from './pages/CartPage';
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
           <Route path="not-found" element={<NotFoundPage />} />
           <Route path="*" element={<NotFoundRedirect />} />
         </Route>

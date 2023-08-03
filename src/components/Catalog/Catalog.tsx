@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card } from '../Card/Card';
 import './Catalog.scss';
-import { Phone } from '../../types/Types';
+import { Phone } from '../../types/Phone';
 
-// interface Props {
-//   phones: Phone[];
-// }
+interface Props {
+  phones: Phone[]; // Receive the phones prop
+}
 
 //TEMPORARY
 const phone: Phone = {
@@ -34,7 +34,7 @@ export const Catalog: React.FC = () => {
         <Card product={phone} />
         {/* {phones.map((phone) => (
           <Card key={phone.id} phone={phone} />
-        ))} */}
+        ))}
       </div>
     </div>
   );

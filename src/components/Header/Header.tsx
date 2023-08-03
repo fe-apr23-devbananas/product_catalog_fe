@@ -82,8 +82,8 @@ export const Header: React.FC = () => {
               <NavLink
                 to={'/favorites'}
                 className={({ isActive }) =>
-                  cn('header__button', 'burger-menu__bottom--button', {
-                    'header__button--active': isActive
+                  cn('header__button', 'burger-menu__bottom-button', {
+                    'burger-menu__bottom-button--active': isActive
                   })
                 }
                 onClick={() => setIsBurgerMenuOpen(false)}
@@ -97,8 +97,8 @@ export const Header: React.FC = () => {
               <NavLink
                 to={'/cart'}
                 className={({ isActive }) =>
-                  cn('header__button', 'burger-menu__bottom--button', {
-                    'header__button--active': isActive
+                  cn('header__button', 'burger-menu__bottom-button', {
+                    'burger-menu__bottom-button--active': isActive
                   })
                 }
                 onClick={() => setIsBurgerMenuOpen(false)}
