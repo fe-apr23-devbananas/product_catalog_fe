@@ -13,17 +13,19 @@ interface Props {
 }
 
 export const MainNavigation: React.FC<Props> = ({ isBurgerMenuOpen }) => {
-
   return (
-    <nav className='nav'>
-      <ul className='nav__list'>
+    <nav className="nav">
+      <ul className="nav__list">
         {navigationItems.map((item) => (
-          <li className='nav__item' key={item.to}>
-            <PageNavLink to={item.to} text={item.text} isBurgerMenuOpen={isBurgerMenuOpen}/>
+          <li className="nav__item" key={item.to}>
+            <PageNavLink
+              to={item.to}
+              text={item.text}
+              isBurgerMenuOpen={isBurgerMenuOpen}
+            />
           </li>
         ))}
       </ul>
     </nav>
   );
 };
-

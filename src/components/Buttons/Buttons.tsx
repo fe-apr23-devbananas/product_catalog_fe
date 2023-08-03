@@ -5,7 +5,18 @@ import React, { FC } from 'react';
 export const Buttons: FC = () => {
   return (
     <div className="buttons">
-      <Button variant="contained" className="buttons__buy" size="medium">
+      <Button
+        variant="contained"
+        className="buttons__buy"
+        size="medium"
+        style={{
+          background: '#4219D0',
+          borderRadius: '48px',
+          transition: 'all 0.5s linear 0s',
+          fontWeight: '700',
+          lineHeight: '21px'
+        }}
+      >
         Add to cart
       </Button>
 
