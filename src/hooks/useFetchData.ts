@@ -10,7 +10,7 @@ export const useFetchData = <TData>() => {
     const fetchData = async () => {
       setIsLoading(true);
       const response = await fetch(
-        'http://localhost:3000/product_catalog_fe/apiTEST/phones.json'
+        'https://devbananas-products-api.onrender.com/phones'
       );
       const data = await response.json();
       setData(data as TData[]);
