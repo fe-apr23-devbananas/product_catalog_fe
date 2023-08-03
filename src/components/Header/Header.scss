@@ -2,9 +2,8 @@
 @import '../../styles/utils/mixins';
 @import '../../styles/utils/fonts';
 
-
 .header {
-  font-family: "Mont-Bold", sans-serif;
+  font-family: 'Mont-Bold', sans-serif;
   &--burger-open {
     position: fixed;
     top: 0;
@@ -73,7 +72,6 @@
     }
 
     &--active {
-
     }
 
     &--burger {
@@ -119,4 +117,3 @@
     }
   }
 }
-
