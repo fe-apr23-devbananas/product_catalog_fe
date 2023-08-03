@@ -50,9 +50,9 @@
   }
 
   &__link {
+    position: relative;
     padding: calc(($header-height-mobile-tablet - 15px) / 2) 0;
     transition: color 1s;
-    border-bottom: 2px solid transparent;
 
     font-weight: 800;
     font-size: 12px;
@@ -63,9 +63,14 @@
       padding: calc(($header-height-desktop - 15px) / 2) 0;
     }
 
-    &.is-active {
-      border-bottom: 2px solid $primary-color;
-      color: $primary-color;
+    &.is-active::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 3px; 
+      background-color: $primary-color; 
+      bottom: 0px;
     }
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import Fav from '../../../assets/icons/Favourites.svg';
@@ -19,7 +19,13 @@ const prepareLink = (type: string) => {
 };
 
 export const HeaderButton: React.FC<Props> = ({ type }) => {
+  const [isClicked, setIsClicked] = useState(false);
   const linkData = prepareLink(type);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    setTimeout(() => setIsClicked(false), 200); // Reset the isClicked state after 200ms (duration of the transition)
+  };
 
   return (
     <NavLink
@@ -32,8 +38,13 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
           { 'header__button--cart': type === 'cart' }
         )
       }
+      onClick={handleClick}
     >
-      <img src={linkData[1]} alt="button" className="header__button--image" />
+      <img
+        src={linkData[1]}
+        alt="button"
+        className={cn('header__button--image', { clicked: isClicked })}
+      />
     </NavLink>
   );
 };
