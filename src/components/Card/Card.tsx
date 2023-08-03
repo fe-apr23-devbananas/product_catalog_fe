@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import './Card.scss';
 import { Buttons } from '../Buttons/Buttons';
 import { Product } from '../../types/Product';
 import { Phone } from '../../types/Phone';
