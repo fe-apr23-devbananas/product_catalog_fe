@@ -6,7 +6,7 @@ import { HomePage, PhonesPage, TabletsPage, AccessoriesPage } from './pages';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
 import { FavoritesPage } from './pages/Favorites';
-import { CartPage } from './pages/CartPage';
+import { CartPage } from './pages/CartPage/CartPage';
 
 export const App = () => {
   return (
