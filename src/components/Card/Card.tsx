@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 import './Card.scss';
 import { Buttons } from '../Buttons/Buttons';
 import { Product } from '../../types/Product';
-import { Phone } from '../../types/Phone';
 
 interface Props {
-  product: Product | Phone;
+  product: Product;
 }
 
 export const Card: FC<Props> = ({ product }) => {
@@ -23,8 +22,8 @@ export const Card: FC<Props> = ({ product }) => {
           {product.name}
         </h3>
         <div className="card__price">
-          <p className="card__price-actual">$932</p>
-          <p className="card__price-full">$999</p>
+          <p className="card__price-actual">{product.price}</p>
+          <p className="card__price-full">${product.fullPrice}</p>
         </div>
       </a>
       <div className="card__line"></div>
