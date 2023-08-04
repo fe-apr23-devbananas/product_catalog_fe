@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
+import { Layout } from './components/Layout/Layout';
 import { HomePage, PhonesPage, TabletsPage, AccessoriesPage } from './pages';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
