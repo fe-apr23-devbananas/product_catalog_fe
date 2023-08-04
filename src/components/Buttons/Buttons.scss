@@ -1,5 +1,6 @@
 .buttons {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 
   &__buy {
@@ -9,8 +10,12 @@
     margin-right: 8px;
   }
 
-  &__favorite:hover {
-    border-color: #000;
-    transform: scale(1.1);
-  }
+  &__favorite {
+    width: 25%;
+
+    &:hover {
+      border-color: #000;
+      transform: scale(1.1);
+    }
+  } 
 }
