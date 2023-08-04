@@ -8,23 +8,19 @@
   max-width: 1200px;
 
   @include onMobile {
-    grid-template-columns: repeat(1, 287px);
+    grid-template-columns: repeat(1, 288px);
     column-gap: 16px;
   }
 
   @include onTablet {
-    grid-template-columns: repeat(2, minmax(288px, 1fr));
-    column-gap: 16px;
+    grid-template-columns: repeat(2, 288px);
   }
 
   @include onTablet-grid {
-    grid-template-columns: repeat(3, minmax(229px, 1fr));
-    column-gap: 16px;
+    grid-template-columns: repeat(3, 229px);
   }
 
   @include onDesktop {
     grid-template-columns: repeat(4, 272px);
-    column-gap: 16px;
-    place-items: center;
   }
 }

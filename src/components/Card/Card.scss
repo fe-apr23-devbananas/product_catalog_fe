@@ -1,9 +1,11 @@
+@import '../../styles/utils/mixins';
+
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 32px;
-  min-width: 229px;
+  // min-width: 229px;
   max-width: 288px;
   border: 1px solid #b8b6b6;
   border-radius: 8px;
@@ -15,14 +17,21 @@
   }
 
   &__top {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 293px;
+
+    @include onDesktop {
+      width: 208px;
+    }
   }
 
   &__photo {
-    display: block;
+    flex-grow: 1;
     width: 100%;
     object-fit: contain;
-    max-height: 130px;
+    // max-height: 130px;
+    min-height: 100px;
     margin-bottom: 24px;
   }
 
@@ -37,7 +46,6 @@
 
   &__price {
     display: flex;
-    margin-bottom: 8px;
   }
 
   &__price-actual {
