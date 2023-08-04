@@ -3,7 +3,7 @@ import './Card.scss';
 import { Buttons } from '../Buttons/Buttons';
 import { Product } from '../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { addItem, selectCart } from '../../features/cart/cartSlice';
+import { addItem, deleteItem, selectCart } from '../../features/cart/cartSlice';
 
 interface Props {
   product: Product;
@@ -13,6 +13,14 @@ export const Card: FC<Props> = ({ product }) => {
   const items = useAppSelector(selectCart);
   const item = items.find((obj) => obj.id === product.itemId);
   const dispath = useAppDispatch();
+
+  const changeButtonHandler = () => {
+    if (item) {
+      dispath(deleteItem(product.itemId));
+    } else {
+      dispath(addItem(product.itemId));
+    }
+  };
 
   return (
     <article className="card">
@@ -44,15 +52,11 @@ export const Card: FC<Props> = ({ product }) => {
           <p className="card__description-right">{product.ram}</p>
         </li>
       </ul>
-      <button
-        onClick={() => {
-          dispath(addItem(product.itemId));
-        }}
-        disabled={item ? true : false}
-      >
-        click
-      </button>
-      <Buttons />
+      
+      <Buttons 
+        onChangeHandler={changeButtonHandler}
+        item={item}
+      />
     </article>
   );
 };
