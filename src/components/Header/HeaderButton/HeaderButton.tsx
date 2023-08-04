@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import Fav from '../../../assets/icons/Favourites.svg';
 import Cart from '../../../assets/icons/shoppingCart.svg';
+import { Counter } from '../Counter/Counter';
+import { useAppSelector } from '../../../hooks/reduxHooks';
+import { selectCart } from '../../../features/cart/cartSlice';
+import { selectFavorites } from '../../../features/favorites/favoritesSlice';
 
 type Props = {
   type: string;
@@ -21,6 +25,10 @@ const prepareLink = (type: string) => {
 export const HeaderButton: React.FC<Props> = ({ type }) => {
   const [isClicked, setIsClicked] = useState(false);
   const linkData = prepareLink(type);
+
+  const storageItems = useAppSelector(
+    type === 'cart' ? selectCart : selectFavorites
+  );
 
   const handleClick = () => {
     setIsClicked(true);
@@ -45,6 +53,8 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
         alt="button"
         className={cn('header__button--image', { clicked: isClicked })}
       />
+
+      <Counter amount={storageItems.length} />
     </NavLink>
   );
 };
