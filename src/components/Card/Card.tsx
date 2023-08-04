@@ -9,6 +9,8 @@ interface Props {
   product: Product;
 }
 
+const API_URL = 'https://devbananas-products-api.onrender.com/';
+
 export const Card: FC<Props> = ({ product }) => {
   const items = useAppSelector(selectCart);
   const item = items.find((obj) => obj.id === product.itemId);
@@ -19,9 +21,8 @@ export const Card: FC<Props> = ({ product }) => {
       <a className="card__top" href="#">
         <img
           className="card__photo"
-          // We should change it later \/
-          src="https://raw.githubusercontent.com/fe-oct22-wonder-devs/product_catalog_imgs/main/img/phones/apple-iphone-11/yellow/00.jpg"
-          alt="wdwdw"
+          src={`${API_URL}${product.image}`}
+          alt={product.name}
         />
         <h3 className="card__title">{product.name}</h3>
         <div className="card__price">
