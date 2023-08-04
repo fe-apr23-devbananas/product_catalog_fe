@@ -1,5 +1,6 @@
 @import '../../../styles/utils/variables';
 @import '../../../styles/utils/mixins';
+@import '../../../styles/utils/placeholders';
 
 .nav {
   display: none;
@@ -63,14 +64,16 @@
       padding: calc(($header-height-desktop - 15px) / 2) 0;
     }
 
-    &.is-active::after {
-      position: absolute;
-      content: '';
-      display: block;
-      width: 100%;
-      height: 3px;
-      background-color: $primary-color;
-      bottom: 0px;
+    &:hover {
+      color: $primary-color;
+    }
+
+    &.is-active {
+      color: $primary-color;
+
+      &::after {
+        @extend %active-class;
+      }
     }
   }
 }

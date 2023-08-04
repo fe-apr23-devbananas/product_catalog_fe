@@ -1,5 +1,6 @@
 @import '../../styles/utils/variables';
 @import '../../styles/utils/mixins';
+@import '../../styles/utils/placeholders';
 
 .burger-menu {
   height: calc(100vh - $header-height-mobile-tablet);
@@ -44,13 +45,7 @@
       width: 50%;
 
       &--active::after {
-        position: absolute;
-        content: '';
-        display: block;
-        width: 100%;
-        height: 3px;
-        background-color: $primary-color;
-        bottom: 0px;
+        @extend %active-class;
       }
     }
   }
