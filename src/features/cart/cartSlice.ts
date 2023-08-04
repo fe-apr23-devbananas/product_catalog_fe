@@ -7,10 +7,6 @@ interface CartState {
   cartList: CartItem[];
 }
 
-if (!localStorage.getItem('cart')) {
-  localStorage.setItem('cart', '[]');
-}
-
 const cartFromLocalStorage = localStorage.getItem('cart') || '[]';
 
 const initialState: CartState = {
