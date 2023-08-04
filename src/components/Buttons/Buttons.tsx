@@ -28,10 +28,10 @@ export const Buttons: FC<Props> = ({ onChangeHandler, item }) => {
             color: '#4219D0',
             width: '75%',
             height: '40px',
-            marginRight: '8px',
+            marginRight: '8px'
           }}
           onClick={() => onChangeHandler()}
-        > 
+        >
           Added
         </Button>
       ) : (
@@ -47,7 +47,7 @@ export const Buttons: FC<Props> = ({ onChangeHandler, item }) => {
             lineHeight: '21px',
             width: '75%',
             height: '40px',
-            marginRight: '8px',
+            marginRight: '8px'
           }}
           onClick={() => onChangeHandler()}
         >

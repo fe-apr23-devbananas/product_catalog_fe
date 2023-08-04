@@ -4,6 +4,7 @@ import { Buttons } from '../Buttons/Buttons';
 import { Product } from '../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { addItem, deleteItem, selectCart } from '../../features/cart/cartSlice';
+import { CartItem } from '../../types/CartItem';
 
 interface Props {
   product: Product;
@@ -12,12 +13,14 @@ interface Props {
 const API_URL = 'https://devbananas-products-api.onrender.com/';
 
 export const Card: FC<Props> = ({ product }) => {
-  const items = useAppSelector(selectCart);
-  const item = items.find((obj) => obj.id === product.itemId);
+  const cartItems = useAppSelector(selectCart);
+  const isItemInCard = cartItems.find(
+    (item: CartItem) => item.id === product.itemId
+  );
   const dispath = useAppDispatch();
 
   const changeButtonHandler = () => {
-    if (item) {
+    if (isItemInCard) {
       dispath(deleteItem(product.itemId));
     } else {
       dispath(addItem(product.itemId));
@@ -53,11 +56,8 @@ export const Card: FC<Props> = ({ product }) => {
           <p className="card__description-right">{product.ram}</p>
         </li>
       </ul>
-      
-      <Buttons 
-        onChangeHandler={changeButtonHandler}
-        item={item}
-      />
+
+      <Buttons onChangeHandler={changeButtonHandler} item={isItemInCard} />
     </article>
   );
 };
