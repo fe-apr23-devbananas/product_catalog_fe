@@ -6,6 +6,7 @@
 
   &__container {
     margin: 0 auto;
+    min-height: calc(100vh - 175px);
     padding: 24px 16px 64px 16px;
 
     @include onTablet {
