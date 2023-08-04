@@ -7,8 +7,14 @@ interface CartState {
   cartList: CartItem[];
 }
 
+if (!localStorage.getItem('cart')) {
+  localStorage.setItem('cart', '[]');
+}
+
+const cartFromLocalStorage = localStorage.getItem('cart') || '[]';
+
 const initialState: CartState = {
-  cartList: JSON.parse(localStorage.getItem('cart') || '') || []
+  cartList: JSON.parse(cartFromLocalStorage)
 };
 
 export const cartSlice = createSlice({
@@ -21,7 +27,7 @@ export const cartSlice = createSlice({
       const cart = [...state.cartList];
       const hasItem = cart.find((item) => item.id === itemId);
 
-      if (hasItem) {
+      if (!hasItem) {
         cart.push(item);
         state.cartList = cart;
         localStorage.setItem('cart', JSON.stringify(state.cartList));
