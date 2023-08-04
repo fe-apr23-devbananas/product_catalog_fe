@@ -4,26 +4,41 @@ import { Buttons } from '../Buttons/Buttons';
 import { Product } from '../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { addItem, deleteItem, selectCart } from '../../features/cart/cartSlice';
+import {
+  addFav,
+  deleteFav,
+  selectFavorites
+} from '../../features/favorites/favoritesSlice';
+import { FavoritesItem } from '../../types/FavoritesItem';
 import { CartItem } from '../../types/CartItem';
 
 interface Props {
   product: Product;
 }
 
-const API_URL = 'https://devbananas-products-api.onrender.com/';
-
 export const Card: FC<Props> = ({ product }) => {
   const cartItems = useAppSelector(selectCart);
-  const isItemInCard = cartItems.find(
-    (item: CartItem) => item.id === product.itemId
-  );
+  const cartItem = cartItems.find((obj: CartItem) => obj.id === product.itemId);
   const dispath = useAppDispatch();
 
-  const changeButtonHandler = () => {
-    if (isItemInCard) {
+  const changeButtonCartHandler = () => {
+    if (cartItem) {
       dispath(deleteItem(product.itemId));
     } else {
       dispath(addItem(product.itemId));
+    }
+  };
+
+  const favItems = useAppSelector(selectFavorites);
+  const favItem = favItems.find(
+    (obj: FavoritesItem) => obj.id === product.itemId
+  );
+
+  const changeButtonFavHandler = () => {
+    if (favItem) {
+      dispath(deleteFav(product.itemId));
+    } else {
+      dispath(addFav(product.itemId));
     }
   };
 
@@ -32,8 +47,9 @@ export const Card: FC<Props> = ({ product }) => {
       <a className="card__top" href="#">
         <img
           className="card__photo"
-          src={`${API_URL}${product.image}`}
-          alt={product.name}
+          // We should change it later \/
+          src="https://raw.githubusercontent.com/fe-oct22-wonder-devs/product_catalog_imgs/main/img/phones/apple-iphone-11/yellow/00.jpg"
+          alt="wdwdw"
         />
         <h3 className="card__title">{product.name}</h3>
         <div className="card__price">
@@ -57,7 +73,12 @@ export const Card: FC<Props> = ({ product }) => {
         </li>
       </ul>
 
-      <Buttons onChangeHandler={changeButtonHandler} item={isItemInCard} />
+      <Buttons
+        onChangeCartHandler={changeButtonCartHandler}
+        onChangeFavHandler={changeButtonFavHandler}
+        cartItem={cartItem}
+        favItem={favItem}
+      />
     </article>
   );
 };
