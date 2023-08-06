@@ -19,7 +19,8 @@ export const PhonesPage: FC = () => {
       color,
       ram,
       year,
-      image
+      image,
+      resolution
     } = phone;
 
     return {
@@ -34,7 +35,8 @@ export const PhonesPage: FC = () => {
       color,
       ram,
       year,
-      image
+      image,
+      resolution
     };
   });
   //КІНЕЦЬ КОСТИЛЮ

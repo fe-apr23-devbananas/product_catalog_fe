@@ -110,3 +110,9 @@
   background-color: $primary-color;
   bottom: 0;
 }
+
+%product-actions-title {
+  @extend %small-text;
+  color: $secondary-color;
+  margin-bottom: 8px;
+}
