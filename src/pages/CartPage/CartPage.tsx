@@ -7,6 +7,9 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import { selectCart } from '../../features/cart/cartSlice';
 import { Product } from '../../types/Product';
 import { useFetchData } from '../../hooks/useFetchData';
+import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import cart from '../../assets/icons/purchaseIcon.png';
 
 export const CartPage = () => {
   const [isModal, setIsModal] = useState(false);
@@ -15,11 +18,19 @@ export const CartPage = () => {
   const cartItems = useAppSelector(selectCart);
   const totalAmount = cartItems.length;
 
-  const filteredItems = phones.filter(phone => 
-    cartItems.some(item => item.id === phone.itemId)
+  const filteredItems = phones.filter((phone) =>
+    cartItems.some((item) => item.id === phone.itemId)
   );
 
-  return (
+  const totalCost = filteredItems.reduce((accumulator, item) => {
+    const cartItem = cartItems.find((cartItem) => cartItem.id === item.itemId);
+    if (cartItem) {
+      return accumulator + item.price * cartItem.amount;
+    }
+    return accumulator;
+  }, 0);
+
+  return cartItems.length ? (
     <div className="cart">
       <a href="#" className="cart__link">
         Back
@@ -30,16 +41,13 @@ export const CartPage = () => {
       <div className="cart__wrapper">
         <div className="cart__items">
           <div className="cart__item">
-            {filteredItems.map(item => (
-              <CartItem 
-                key={item.id}
-                item={item}
-              />
+            {filteredItems.map((item) => (
+              <CartItem key={item.id} item={item} />
             ))}
           </div>
         </div>
         <div className="cart__total">
-          <h3 className="cart__price">$14546</h3>
+          <h3 className="cart__price">${totalCost}</h3>
           <span className="cart__amount">Total for {totalAmount} item(s)</span>
           <button className="cart__button" onClick={() => setIsModal(true)}>
             Checkout
@@ -48,6 +56,19 @@ export const CartPage = () => {
       </div>
 
       {isModal && <ModalWindow />}
+    </div>
+  ) : (
+    <div className={cn('empty__container')}>
+      <img src={cart} alt="" />
+      <h2 className={cn('empty__container--text', 'empty__title')}>
+        {'Nothing here yet :('}
+      </h2>
+      <h2 className={cn('empty__container_bottom--text')}>
+        Let&apos;s better look what we have
+      </h2>
+      <Link to="/" className={cn('empty__container--button')}>
+        find something!
+      </Link>
     </div>
   );
 };

@@ -5,18 +5,19 @@
   padding: 16px;
   border: 1px solid $elements-color;
   border-radius: 16px;
+  margin-bottom: 16px;
 
   @include onTablet {
     display: flex;
     justify-content: space-between;
 
-    padding: 24px;
+    margin-bottom: 16px;
   }
 
   &__info {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
   }
 
   &__delete {
@@ -78,19 +79,34 @@
   }
 
   &__button {
-    padding: 8px;
-    background-color: transparent;
-    border: 1px solid $elements-color;
-    border-radius: 48px;
-
-    &:hover {
-      background-color: $secondary-color;
+    &--minus {
+      padding: 8px;
       cursor: pointer;
+      background-color: transparent;
+      border: 1px solid $elements-color;
+      border-radius: 48px;
+
+      &_disabled {
+        cursor: auto;
+        border: 1px solid $elements-color;
+      }
     }
 
-    &:active {
-      transform: translateY(2px);
-      box-shadow: 0px 2px 4px $elements-color;
+    &--plus {
+      padding: 8px;
+      background-color: transparent;
+      border: 1px solid $elements-color;
+      border-radius: 48px;
+
+      &:hover {
+        background-color: $secondary-color;
+        cursor: pointer;
+      }
+
+      &:active {
+        transform: translateY(2px);
+        box-shadow: 0px 2px 4px $elements-color;
+      }
     }
   }
 
@@ -101,6 +117,10 @@
 
     &--decrease {
       background-image: url(../../assets/icons/Minus.svg);
+
+      &_disabled {
+        background-image: url(../../assets/icons/Minus-noActive.svg);
+      }
     }
 
     &--increase {
@@ -109,18 +129,21 @@
   }
 
   &__amount {
-    margin: 0 13px;
+    margin: 0 15px;
     font-family: 'Mont-Regular';
-    font-size: 14px;
+    font-style: normal;
     font-weight: 600;
+    line-height: 21px;
     color: $primary-color;
   }
 
   &__price {
-    margin: 0 0 0 43px;
+    margin-right: 16px;
     font-family: 'Mont-Bold';
     font-size: 22px;
     font-weight: 800;
+    width: 100px;
+    text-align: right;
     color: $primary-color;
   }
 }
