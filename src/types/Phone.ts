@@ -4,7 +4,9 @@ interface Description {
 }
 
 export interface Phone {
-  id: string;
+  id: number;
+  category: string;
+  itemId: string;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

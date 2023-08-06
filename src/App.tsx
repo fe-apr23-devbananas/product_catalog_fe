@@ -7,6 +7,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
 import { FavoritesPage } from './pages/Favorites';
 import { CartPage } from './pages/CartPage/CartPage';
+import { ProductItem } from './pages/ProductPage';
 
 export const App = () => {
   return (
@@ -14,7 +15,10 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="phones" element={<PhonesPage />} />
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":itemId" element={<ProductItem />} />
+          </Route>
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
