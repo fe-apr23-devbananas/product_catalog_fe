@@ -5,7 +5,7 @@ import { Layout } from './components/Layout/Layout';
 import { HomePage, PhonesPage, TabletsPage, AccessoriesPage } from './pages';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
-import { FavoritesPage } from './pages/Favorites';
+import { FavoritesPage } from './pages/FavoritesPage/Favorites';
 import { CartPage } from './pages/CartPage/CartPage';
 import { ProductItem } from './pages/ProductPage';
 

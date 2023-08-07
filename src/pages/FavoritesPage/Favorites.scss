@@ -1,0 +1,65 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.favorites {
+  &__link {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 24px;
+    padding-left: 20px;
+
+    font-family: 'Mont-Regular';
+    font-size: 12px;
+    font-weight: 700;
+
+    color: $secondary-color;
+    text-decoration: none;
+
+    @include onTablet {
+      margin-bottom: 16px;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+
+      background-image: url(../../assets/icons/arrow-back.svg);
+      background-size: cover;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    font-size: 48px;
+    font-weight: 800;
+    color: $primary-color;
+  }
+
+  &__quantity {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+
+    margin-bottom: 40px;
+  }
+
+  &__wrapper {
+    @include onDesktop {
+      display: flex;
+    }
+  }
+}
