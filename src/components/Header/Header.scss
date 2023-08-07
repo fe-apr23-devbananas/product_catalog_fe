@@ -3,10 +3,16 @@
 @import '../../styles/utils/fonts';
 @import '../../styles/utils/placeholders';
 
+.disable-scroll {
+  overflow: hidden;
+}
+
 .header {
   font-family: 'Mont-Bold', sans-serif;
+  
   &--burger-open {
     position: fixed;
+    z-index: 999;
     top: 0;
     bottom: 0;
     left: 0;
