@@ -41,7 +41,8 @@
     text-align: center;
 
     &--burger {
-      margin: 0;
+      margin-right: 0;
+      margin-bottom: 16px;
     }
 
     @include onDesktop {
