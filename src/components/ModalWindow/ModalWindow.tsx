@@ -3,11 +3,16 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import './ModalWindow.scss';
 import React from 'react';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { clearCart } from '../../features/cart/cartSlice';
 
 export const ModalWindow = () => {
   const [isModal, setIsModal] = useState(true);
+  const dispatch = useAppDispatch();
+
   const closeModal = () => {
-    return () => setIsModal(false);
+    setIsModal(false);
+    dispatch(clearCart());
   };
 
   return (
