@@ -22,7 +22,15 @@ const navigationItems = [
 export const Header: React.FC = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
-  console.log(isBurgerMenuOpen, '!!!');
+  const handleBurgerMenuClick = () => {
+    setIsBurgerMenuOpen(!isBurgerMenuOpen);
+
+    if (!isBurgerMenuOpen) {
+      document.body.classList.add('disable-scroll');
+    } else {
+      document.body.classList.remove('disable-scroll');
+    }
+  };
 
   return (
     <>
@@ -48,9 +56,7 @@ export const Header: React.FC = () => {
               className={cn('header__button', 'header__button--burger', {
                 'header__button--burger_open': isBurgerMenuOpen
               })}
-              onClick={() => {
-                setIsBurgerMenuOpen((prev) => !prev);
-              }}
+              onClick={handleBurgerMenuClick}
             />
           </div>
         </div>
@@ -64,7 +70,7 @@ export const Header: React.FC = () => {
               <ul className="nav__list nav__list--burger">
                 {navigationItems.map((item) => (
                   <li
-                    onClick={() => setIsBurgerMenuOpen(false)}
+                    onClick={handleBurgerMenuClick}
                     className="nav__item  nav__item--burger"
                     key={item.to}
                   >
@@ -86,7 +92,7 @@ export const Header: React.FC = () => {
                     'burger-menu__bottom-button--active': isActive
                   })
                 }
-                onClick={() => setIsBurgerMenuOpen(false)}
+                onClick={handleBurgerMenuClick}
               >
                 <img
                   src={Favs}
@@ -101,7 +107,7 @@ export const Header: React.FC = () => {
                     'burger-menu__bottom-button--active': isActive
                   })
                 }
-                onClick={() => setIsBurgerMenuOpen(false)}
+                onClick={handleBurgerMenuClick}
               >
                 <img
                   src={Cart}
