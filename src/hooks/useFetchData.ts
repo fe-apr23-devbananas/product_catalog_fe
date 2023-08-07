@@ -11,7 +11,7 @@ export const useFetchData = <TData>() => {
     (async () => {
       setIsLoading(true);
       const response = await fetch(
-        'https://devbananas-products-api.onrender.com/phones'
+        'https://devbananas-products-api.onrender.com/products'
       );
       const data = await response.json();
       setData(data as TData[]);
@@ -26,7 +26,7 @@ export const useFetchData = <TData>() => {
 export const getItemById = async (phoneSlug: string, categoryName: string) => {
   try {
     const response = await fetch(
-      `https://devbananas-products-api.onrender.com/${categoryName}/${phoneSlug}`
+      `https://devbananas-products-api.onrender.com/producst/${phoneSlug}?category=${categoryName}/`
     );
     if (!response.ok) {
       throw new Error('Failed to fetch phone data.');

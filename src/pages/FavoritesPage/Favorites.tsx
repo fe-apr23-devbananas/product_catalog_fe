@@ -16,7 +16,7 @@ export const FavoritesPage: FC = () => {
   );
 
   return (
-    // change to favorites BEM 
+    // change to favorites BEM
     // grid layout ask and implement
     <div className="favorites">
       <a href="#" className="favorites__link">
@@ -25,9 +25,7 @@ export const FavoritesPage: FC = () => {
 
       <h1 className="favorites__title">Favorites</h1>
 
-      <p className="favorites__quantity">
-        {filteredItems.length} models
-      </p>
+      <p className="favorites__quantity">{filteredItems.length} models</p>
 
       <div className="favorites__wrapper">
         <Catalog products={filteredItems} />

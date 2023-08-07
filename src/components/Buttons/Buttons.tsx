@@ -5,15 +5,17 @@ import { CartItem } from '../../types/CartItem';
 import { FavoritesItem } from '../../types/FavoritesItem';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { addItem, deleteItem, selectCart } from '../../features/cart/cartSlice';
-import { addFav, deleteFav, selectFavorites } from '../../features/favorites/favoritesSlice';
+import {
+  addFav,
+  deleteFav,
+  selectFavorites
+} from '../../features/favorites/favoritesSlice';
 
 interface Props {
-  id: string
+  id: string;
 }
 
-export const Buttons: FC<Props> = ({
-  id,
-}) => {
+export const Buttons: FC<Props> = ({ id }) => {
   const cartItems = useAppSelector(selectCart);
   const cartItem = cartItems.find((obj: CartItem) => obj.id === id);
   const dispath = useAppDispatch();
@@ -27,9 +29,7 @@ export const Buttons: FC<Props> = ({
   };
 
   const favItems = useAppSelector(selectFavorites);
-  const favItem = favItems.find(
-    (obj: FavoritesItem) => obj.id === id
-  );
+  const favItem = favItems.find((obj: FavoritesItem) => obj.id === id);
 
   const changeButtonFavHandler = () => {
     if (favItem) {

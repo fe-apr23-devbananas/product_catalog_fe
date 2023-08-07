@@ -41,9 +41,7 @@ export const Card: FC<Props> = ({ product }) => {
         </li>
       </ul>
 
-      <Buttons
-        id={product.itemId}
-      />
+      <Buttons id={product.itemId} />
     </article>
   );
 };
