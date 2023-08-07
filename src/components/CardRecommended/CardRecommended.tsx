@@ -11,10 +11,7 @@ interface Props {
   phones: Product[];
 }
 
-export const CardRecommended: React.FC<Props> = ({
-  title,
-  phones
-}) => {
+export const CardRecommended: React.FC<Props> = ({ title, phones }) => {
   const listRef = useRef<HTMLDivElement | null>(null);
 
   const handlePrevClick = () => {
@@ -55,10 +52,7 @@ export const CardRecommended: React.FC<Props> = ({
       <div className="recommended__content" ref={listRef}>
         <div className="recommended__scroll-wrapper">
           {phones.map((phone) => (
-            <Card
-              key={phone.id}
-              product={phone}
-            />
+            <Card key={phone.id} product={phone} />
           ))}
         </div>
       </div>
