@@ -17,7 +17,6 @@ export const FavoritesPage: FC = () => {
   const filteredItems = phones.filter((phone) =>
     favoriteItems.some((item) => item.id === phone.itemId)
   );
-
   return filteredItems.length ? (
     <div className="favorites">
       <a href="#" className="favorites__link">
@@ -28,6 +27,7 @@ export const FavoritesPage: FC = () => {
       <p className="favorites__quantity">
         {filteredItems.length === 1 ? `${filteredItems.length} item` : `${filteredItems.length} items`}
       </p>
+
 
       <div className="favorites__wrapper">
         <Catalog products={filteredItems} />
