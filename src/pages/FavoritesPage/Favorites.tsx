@@ -5,6 +5,9 @@ import { Product } from '../../types/Product';
 import { Catalog } from '../../components/Catalog';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { selectFavorites } from '../../features/favorites/favoritesSlice';
+import cn from 'classnames';
+import { Link } from 'react-router-dom';
+import emptyFav from '../../assets/icons/emptyFav.png';
 
 export const FavoritesPage: FC = () => {
   const { data: phones } = useFetchData<Product>();
@@ -14,22 +17,34 @@ export const FavoritesPage: FC = () => {
   const filteredItems = phones.filter((phone) =>
     favoriteItems.some((item) => item.id === phone.itemId)
   );
-
-  return (
-    // change to favorites BEM
-    // grid layout ask and implement
+  return filteredItems.length ? (
     <div className="favorites">
       <a href="#" className="favorites__link">
         Back
       </a>
 
       <h1 className="favorites__title">Favorites</h1>
+      <p className="favorites__quantity">
+        {filteredItems.length === 1 ? `${filteredItems.length} item` : `${filteredItems.length} items`}
+      </p>
 
-      <p className="favorites__quantity">{filteredItems.length} models</p>
 
       <div className="favorites__wrapper">
         <Catalog products={filteredItems} />
       </div>
+    </div>
+  ) : (
+    <div className={cn('empty__container')}>
+      <img src={emptyFav} alt="Empty Favorites" className='image' />
+      <h2 className={cn('empty__container--text', 'empty__title')}>
+        {'Nothing here yet :('}
+      </h2>
+      <h2 className={cn('empty__container_bottom--text')}>
+        Let&apos;s find your favorites
+      </h2>
+      <Link to="/" className={cn('empty__container--button')}>
+        FIND FAVORITES!
+      </Link>
     </div>
   );
 };
