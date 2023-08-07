@@ -12,7 +12,7 @@ import image2 from '../../assets/productImages/image2.png';
 import image3 from '../../assets/productImages/image3.png';
 import image4 from '../../assets/productImages/image4.png';
 import image5 from '../../assets/productImages/image5.png';
-import { Buttons } from '../../components/Buttons/Buttons';
+// import { Buttons } from '../../components/Buttons/Buttons';
 
 const examplePhone: Product = {
   id: 1,
@@ -191,7 +191,7 @@ export const ProductItem: React.FC = () => {
           </section>
 
           <section className="product__buy">
-            <Buttons />
+            {/* <Buttons /> */}
           </section>
 
           <ul className="card__descriptions">
