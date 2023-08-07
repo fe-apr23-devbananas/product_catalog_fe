@@ -114,3 +114,12 @@
 
   background-color: rgba($color: #000000, $alpha: 0.3);
 }
+
+.close {
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
