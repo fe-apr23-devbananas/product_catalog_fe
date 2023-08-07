@@ -190,9 +190,7 @@ export const ProductItem: React.FC = () => {
             <p className="product__price-full">${examplePhone.fullPrice}</p>
           </section>
 
-          <section className="product__buy">
-            {/* <Buttons /> */}
-          </section>
+          <section className="product__buy">{/* <Buttons /> */}</section>
 
           <ul className="card__descriptions">
             <li className="card__description">

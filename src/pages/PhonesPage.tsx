@@ -7,8 +7,6 @@ export const PhonesPage: FC = () => {
   const { isLoading, data: phones } = useFetchData<Product>();
 
   return (
-    <div>
-      {isLoading ? <p>Loading...</p> : <Catalog products={phones} />}
-    </div>
+    <div>{isLoading ? <p>Loading...</p> : <Catalog products={phones} />}</div>
   );
 };
