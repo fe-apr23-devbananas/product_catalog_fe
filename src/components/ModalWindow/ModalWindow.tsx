@@ -5,6 +5,7 @@ import './ModalWindow.scss';
 import React from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { clearCart } from '../../features/cart/cartSlice';
+import successBuy from '../../assets/icons/successBuy.png';
 
 export const ModalWindow = () => {
   const [isModal, setIsModal] = useState(true);
@@ -16,14 +17,24 @@ export const ModalWindow = () => {
   };
 
   return (
-    <div className={cn('modal', { 'is-active': isModal })}>
-      <div className="modal__content">
-        <div className="modal__message">Thank&#39;s for shopping!</div>
+    <>
+      {isModal && (
+        <div
+          className={cn('modal', 'modal__backdrop', { 'is-active': isModal })}
+        >
+          <div className="modal__content">
+            <img src={successBuy} className={cn('modal__image')} />
+            <div className="modal__thank">Thank&#39;s for shopping!</div>
+            <div className="modal__message">
+              Your order was successfully applied!
+            </div>
 
-        <NavLink onClick={closeModal} to="/">
-          <button className="modal__button">Back to Store</button>
-        </NavLink>
-      </div>
-    </div>
+            <NavLink onClick={closeModal} to="/">
+              <button className="modal__button">Back to Store</button>
+            </NavLink>
+          </div>
+        </div>
+      )}
+    </>
   );
 };

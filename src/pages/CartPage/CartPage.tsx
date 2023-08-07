@@ -16,7 +16,10 @@ export const CartPage = () => {
   const { data: phones } = useFetchData<Product>();
 
   const cartItems = useAppSelector(selectCart);
-  const totalAmount = cartItems.length;
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.amount,
+    0
+  );
 
   const filteredItems = phones.filter((phone) =>
     cartItems.some((item) => item.id === phone.itemId)
@@ -48,7 +51,11 @@ export const CartPage = () => {
         </div>
         <div className="cart__total">
           <h3 className="cart__price">${totalCost}</h3>
-          <span className="cart__amount">Total for {totalAmount} item(s)</span>
+          <span className="cart__amount">
+            {totalQuantity === 1
+              ? `Total for ${totalQuantity} item`
+              : `Total for ${totalQuantity} items`}
+          </span>
           <button className="cart__button" onClick={() => setIsModal(true)}>
             Checkout
           </button>
