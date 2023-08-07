@@ -90,20 +90,36 @@
         cursor: auto;
         border: 1px solid $elements-color;
       }
+
+      &:hover:not(:disabled) {
+        background-color: $secondary-color;
+        cursor: pointer;
+      }
+  
+      &:active:not(:disabled) {
+        transform: translateY(2px);
+        box-shadow: 0px 2px 4px $elements-color;
+      }
     }
 
     &--plus {
       padding: 8px;
+      cursor: pointer;
       background-color: transparent;
       border: 1px solid $elements-color;
       border-radius: 48px;
 
-      &:hover {
+      &_disabled {
+        cursor: auto !important;
+        border: 1px solid $elements-color;
+      }
+
+      &:hover:not(:disabled) {
         background-color: $secondary-color;
         cursor: pointer;
       }
-
-      &:active {
+  
+      &:active:not(:disabled) {
         transform: translateY(2px);
         box-shadow: 0px 2px 4px $elements-color;
       }
@@ -125,6 +141,11 @@
 
     &--increase {
       background-image: url(../../assets/icons/Plus.svg);
+
+      &_disabled {
+        background-image: url(../../assets/icons/Plus-noActive.png);
+        background-size: 16px;
+      }
     }
   }
 

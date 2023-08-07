@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../hooks/reduxHooks';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { Link } from 'react-router-dom';
 
 interface Props {
   item: Product;
@@ -38,8 +39,10 @@ export const CartItem: FC<Props> = ({ item }) => {
   };
 
   const buttonIncreaseHandler = () => {
-    setAmount((prev) => prev + 1);
-    dispatch(changeAmount({ itemId: item.itemId, sign: '+' }));
+    if (amount < 99) {
+      setAmount((prev) => prev + 1);
+      dispatch(changeAmount({ itemId: item.itemId, sign: '+' }));
+    }
   };
 
   return (
@@ -54,7 +57,9 @@ export const CartItem: FC<Props> = ({ item }) => {
           src={`${API_URL}${item.image}`}
           alt={item.name}
         />
-        <div className="cart-item__title">{item.name}</div>
+        <Link to={`/${item.category}/${item.itemId}`} className="cart-item__link">
+          <div className="cart-item__title">{item.name}</div>
+        </Link>
       </div>
 
       <div className="cart-item__details">
@@ -76,13 +81,18 @@ export const CartItem: FC<Props> = ({ item }) => {
           </button>
           <span className="cart-item__amount">{amount}</span>
           <button
-            className="cart-item__button--plus"
+            className={classNames('cart-item__button--plus', {
+              'cart-item__button--plus_disabled': amount >= 99
+            })}
             onClick={buttonIncreaseHandler}
+            disabled={amount >= 99}
           >
             <span
-              className="
-                cart-item__button-icon
-                cart-item__button-icon--increase"
+              className={classNames(
+                'cart-item__button-icon',
+                'cart-item__button-icon--increase',
+                { 'cart-item__button-icon--increase_disabled': amount >= 99 }
+              )}
             ></span>
           </button>
         </div>
