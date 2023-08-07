@@ -57,7 +57,10 @@ export const CartItem: FC<Props> = ({ item }) => {
           src={`${API_URL}${item.image}`}
           alt={item.name}
         />
-        <Link to={`/${item.category}/${item.itemId}`} className="cart-item__link">
+        <Link
+          to={`/${item.category}/${item.itemId}`}
+          className="cart-item__link"
+        >
           <div className="cart-item__title">{item.name}</div>
         </Link>
       </div>
