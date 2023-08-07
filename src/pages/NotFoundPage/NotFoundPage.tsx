@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import ImgComponent from './ImgComponent';
+import { NavLink } from 'react-router-dom';
 
 export const NotFoundPage: FC = () => {
   const imgSrc =
@@ -12,7 +13,7 @@ export const NotFoundPage: FC = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '20vh'
+        marginTop: '10vh'
       }}
     >
       <h1 className="title" style={{ textAlign: 'center' }}>
@@ -20,6 +21,10 @@ export const NotFoundPage: FC = () => {
       </h1>
 
       <ImgComponent src={imgSrc} />
+
+      <NavLink to="/">
+        <button className="modal__button">Back to Store</button>
+      </NavLink>
     </div>
   );
 };
