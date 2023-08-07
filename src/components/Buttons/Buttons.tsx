@@ -3,20 +3,42 @@ import './Buttons.scss';
 import React, { FC } from 'react';
 import { CartItem } from '../../types/CartItem';
 import { FavoritesItem } from '../../types/FavoritesItem';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { addItem, deleteItem, selectCart } from '../../features/cart/cartSlice';
+import { addFav, deleteFav, selectFavorites } from '../../features/favorites/favoritesSlice';
 
 interface Props {
-  onChangeCartHandler: () => void;
-  onChangeFavHandler: () => void;
-  cartItem: CartItem | undefined;
-  favItem: FavoritesItem | undefined;
+  id: string
 }
 
 export const Buttons: FC<Props> = ({
-  onChangeCartHandler,
-  cartItem,
-  onChangeFavHandler,
-  favItem
+  id,
 }) => {
+  const cartItems = useAppSelector(selectCart);
+  const cartItem = cartItems.find((obj: CartItem) => obj.id === id);
+  const dispath = useAppDispatch();
+
+  const changeButtonCartHandler = () => {
+    if (cartItem) {
+      dispath(deleteItem(id));
+    } else {
+      dispath(addItem(id));
+    }
+  };
+
+  const favItems = useAppSelector(selectFavorites);
+  const favItem = favItems.find(
+    (obj: FavoritesItem) => obj.id === id
+  );
+
+  const changeButtonFavHandler = () => {
+    if (favItem) {
+      dispath(deleteFav(id));
+    } else {
+      dispath(addFav(id));
+    }
+  };
+
   return (
     <div className="buttons">
       {cartItem ? (
@@ -36,7 +58,7 @@ export const Buttons: FC<Props> = ({
             height: '40px',
             marginRight: '8px'
           }}
-          onClick={() => onChangeCartHandler()}
+          onClick={() => changeButtonCartHandler()}
         >
           Added
         </Button>
@@ -55,7 +77,7 @@ export const Buttons: FC<Props> = ({
             height: '40px',
             marginRight: '8px'
           }}
-          onClick={() => onChangeCartHandler()}
+          onClick={() => changeButtonCartHandler()}
         >
           Add to cart
         </Button>
@@ -68,7 +90,7 @@ export const Buttons: FC<Props> = ({
           border: '1px solid #ced2ed',
           transition: 'all 0.3s linear 0s'
         }}
-        onClick={() => onChangeFavHandler()}
+        onClick={() => changeButtonFavHandler()}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

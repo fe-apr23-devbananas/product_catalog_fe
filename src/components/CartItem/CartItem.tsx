@@ -78,6 +78,7 @@ export const CartItem: FC<Props> = ({ item }) => {
           <button
             className="cart-item__button--plus"
             onClick={buttonIncreaseHandler}
+            disabled={amount === 99}
           >
             <span
               className="

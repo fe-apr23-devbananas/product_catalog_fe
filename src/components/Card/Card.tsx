@@ -2,15 +2,6 @@ import React, { FC } from 'react';
 import './Card.scss';
 import { Buttons } from '../Buttons/Buttons';
 import { Product } from '../../types/Product';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { addItem, deleteItem, selectCart } from '../../features/cart/cartSlice';
-import {
-  addFav,
-  deleteFav,
-  selectFavorites
-} from '../../features/favorites/favoritesSlice';
-import { FavoritesItem } from '../../types/FavoritesItem';
-import { CartItem } from '../../types/CartItem';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -20,37 +11,11 @@ interface Props {
 const API_URL = 'https://devbananas-products-api.onrender.com/';
 
 export const Card: FC<Props> = ({ product }) => {
-  const cartItems = useAppSelector(selectCart);
-  const cartItem = cartItems.find((obj: CartItem) => obj.id === product.itemId);
-  const dispath = useAppDispatch();
-
-  const changeButtonCartHandler = () => {
-    if (cartItem) {
-      dispath(deleteItem(product.itemId));
-    } else {
-      dispath(addItem(product.itemId));
-    }
-  };
-
-  const favItems = useAppSelector(selectFavorites);
-  const favItem = favItems.find(
-    (obj: FavoritesItem) => obj.id === product.itemId
-  );
-
-  const changeButtonFavHandler = () => {
-    if (favItem) {
-      dispath(deleteFav(product.itemId));
-    } else {
-      dispath(addFav(product.itemId));
-    }
-  };
-
   return (
     <article className="card">
       <Link to={`${product.itemId}`} className="card__top">
         <img
           className="card__photo"
-          // We should change it later \/
           src={`${API_URL}${product.image}`}
           alt={product.name}
         />
@@ -77,10 +42,7 @@ export const Card: FC<Props> = ({ product }) => {
       </ul>
 
       <Buttons
-        onChangeCartHandler={changeButtonCartHandler}
-        onChangeFavHandler={changeButtonFavHandler}
-        cartItem={cartItem}
-        favItem={favItem}
+        id={product.itemId}
       />
     </article>
   );
