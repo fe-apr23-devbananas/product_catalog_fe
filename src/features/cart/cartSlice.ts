@@ -35,16 +35,23 @@ export const cartSlice = createSlice({
       state.cartList = cart.filter((item) => item.id !== itemId);
       localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
-    changeAmount: (state, action: PayloadAction<[string, '+' | '-']>) => {
-      const [itemId, sign] = action.payload;
+    changeAmount: (
+      state,
+      action: PayloadAction<{ itemId: string; sign: '+' | '-' }>
+    ) => {
+      const { itemId, sign } = action.payload;
       const cart = [...state.cartList];
-      state.cartList = cart.map((item) => {
-        if (item.id === itemId) {
-          item.amount = sign === '+' ? item.amount + 1 : item.amount - 1;
-        }
+      const cartItem = cart.find((item) => item.id === itemId);
 
-        return item;
-      });
+      if (cartItem) {
+        if (sign === '+') {
+          cartItem.amount += 1;
+        } else if (sign === '-') {
+          cartItem.amount = Math.max(cartItem.amount - 1, 1);
+        }
+      }
+
+      state.cartList = cart;
       localStorage.setItem('cart', JSON.stringify(state.cartList));
     },
     clearCart: (state) => {

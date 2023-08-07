@@ -1,18 +1,31 @@
 import React, { FC, useState } from 'react';
 import './CartItem.scss';
 import { Product } from '../../types/Product';
-import { deleteItem } from '../../features/cart/cartSlice';
+import { changeAmount, deleteItem } from '../../features/cart/cartSlice';
 import { useAppDispatch } from '../../hooks/reduxHooks';
+import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 interface Props {
   item: Product;
 }
 
 export const CartItem: FC<Props> = ({ item }) => {
-  const [amount, setAmount] = useState(1);
+  const initialAmount = useSelector((state: RootState) => {
+    const cartItem = state.cart.cartList.find(
+      (cartItem) => cartItem.id === item.itemId
+    );
+    return cartItem ? cartItem.amount : 1;
+  });
+
+  const [amount, setAmount] = useState(initialAmount);
 
   const API_URL = 'https://devbananas-products-api.onrender.com/';
   const totalPrice = item.price * amount;
+
+  const isOneAmount = amount === 1;
+
   const dispatch = useAppDispatch();
 
   const removeItemHandler = () => {
@@ -20,17 +33,19 @@ export const CartItem: FC<Props> = ({ item }) => {
   };
 
   const buttonDecreaseHandler = () => {
-    setAmount(prev => prev - 1);
+    setAmount((prev) => Math.max(prev - 1, 1));
+    dispatch(changeAmount({ itemId: item.itemId, sign: '-' }));
   };
 
   const buttonIncreaseHandler = () => {
-    setAmount(prev => prev + 1);
+    setAmount((prev) => prev + 1);
+    dispatch(changeAmount({ itemId: item.itemId, sign: '+' }));
   };
 
   return (
     <div className="cart-item">
       <div className="cart-item__info">
-        <button 
+        <button
           className="cart-item__delete"
           onClick={removeItemHandler}
         ></button>
@@ -44,20 +59,24 @@ export const CartItem: FC<Props> = ({ item }) => {
 
       <div className="cart-item__details">
         <div className="cart-item__amount-info">
-          <button 
-            className="cart-item__button"
+          <button
+            className={classNames('cart-item__button--minus', {
+              'cart-item__button--minus_disabled': isOneAmount
+            })}
             onClick={buttonDecreaseHandler}
             disabled={amount <= 1}
           >
             <span
-              className="
-                cart-item__button-icon
-                cart-item__button-icon--decrease"
+              className={classNames(
+                'cart-item__button-icon',
+                'cart-item__button-icon--decrease',
+                { 'cart-item__button-icon--decrease_disabled': isOneAmount }
+              )}
             ></span>
           </button>
           <span className="cart-item__amount">{amount}</span>
-          <button 
-            className="cart-item__button"
+          <button
+            className="cart-item__button--plus"
             onClick={buttonIncreaseHandler}
           >
             <span
@@ -68,7 +87,7 @@ export const CartItem: FC<Props> = ({ item }) => {
           </button>
         </div>
 
-        <h4 className="cart-item__price">{totalPrice}</h4>
+        <h4 className="cart-item__price">${totalPrice}</h4>
       </div>
     </div>
   );
