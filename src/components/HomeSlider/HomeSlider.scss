@@ -1,0 +1,129 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/fonts';
+@import '../../styles/utils/placeholders';
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
+.slider {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1040px;
+
+  @include onTablet {
+  }
+
+  @include onDesktop {
+    max-width: 1136px;
+  }
+
+  &__title {
+    text-align: left;
+    @extend %h1;
+    color: $primary-color;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__main-img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__banner {
+    content: url('../../assets/banner-mobile.png');
+    width: 100%;
+    margin: 0 auto;
+    object-fit: fill;
+
+    @include onTablet {
+      content: '';
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  &__wrapper {
+    @include onTablet {
+      padding-left: 51px;
+      padding-right: 51px;
+    }
+  }
+}
+
+.slick {
+  &-prev,
+  &-next {
+    display: none !important;
+
+    @include onTablet {
+      position: absolute;
+      display: block !important;
+
+      width: 32px;
+      height: 100%;
+
+      border: 1px solid $icons-color;
+      border-radius: 48px;
+      outline: none;
+      padding: 14px;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    &-arrow {
+      display: none;
+    }
+  }
+
+  &-prev {
+    &::before {
+      content: '';
+    }
+
+    left: -50px;
+    background-image: url('../../assets/icons/arrow-left.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &-next {
+    &::before {
+      content: '';
+      background-image: url('../../assets/icons/arrow-right.svg');
+    }
+
+    right: -50px;
+    background-image: url('../../assets/icons/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &-dot {
+    background: $elements-color;
+
+    &:hover {
+      background: $secondary-color;
+    }
+  }
+
+  &-active {
+    .slick-dot {
+      background: $primary-color;
+    }
+  }
+}
+
+.slick-slide.slick-active.slick-current {
+  padding-left: 0;
+}
