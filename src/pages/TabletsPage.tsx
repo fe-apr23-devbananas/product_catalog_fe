@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, useEffect, useState } from 'react';
 import { EmptyProducts } from '../components/EmptyProducts/EmptyProducts';
 
@@ -10,7 +11,7 @@ export const TabletsPage: FC = () => {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      'https://devbananas-products-api.onrender.com/products?category=phones&limit=20&sortBy=name'
+      'https://devbananas-products-api.onrender.com/products/apple-iphone-7-32gb-black?category=phones'
     )
       .then((response) => response.json())
       .then((data) => {
@@ -19,6 +20,6 @@ export const TabletsPage: FC = () => {
       })
       .finally(() => setIsLoading(false));
   }, []);
-  
+
   return <EmptyProducts />;
 };

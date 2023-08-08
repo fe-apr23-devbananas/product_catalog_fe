@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Phone } from '../types/Phone';
+// import { Phone } from '../types/Phone';
+import { ProductDetails } from '../types/ProductDetails';
 
 //* for each page, just need to change <TData> products/phones/accessories/tablets
 
@@ -26,13 +27,14 @@ export const useFetchData = <TData>() => {
 export const getItemById = async (phoneSlug: string, categoryName: string) => {
   try {
     const response = await fetch(
-      `https://devbananas-products-api.onrender.com/producst/${phoneSlug}?category=${categoryName}/`
+      `https://devbananas-products-api.onrender.com/products/${phoneSlug}?category=${categoryName}`
     );
     if (!response.ok) {
       throw new Error('Failed to fetch phone data.');
     }
     const data = await response.json();
-    return data as Phone[];
+    console.log(data);
+    return data as ProductDetails;
   } catch (error) {
     console.error('Error fetching phone data:', error);
     return;
