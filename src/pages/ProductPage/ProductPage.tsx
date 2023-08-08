@@ -7,6 +7,10 @@ import cn from 'classnames';
 import Slider from 'react-slick';
 import { Buttons } from '../../components/Buttons/Buttons';
 import { ProductDetails } from '../../types/ProductDetails';
+import { Loader } from '../../components/Loader';
+import { About } from '../../components/About';
+import { getSpecsFromProductData } from '../../helpers/getSpecsFromProductData';
+import { ProductTechSpecs } from '../../components/ProductTechSpecs';
 
 export const ProductItem: React.FC = () => {
   const { phoneSlug } = useParams();
@@ -50,6 +54,8 @@ export const ProductItem: React.FC = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
+
+  console.log(currentPhone);
 
   const handleColorButtonClick = (color: string) => {
     setSelectedColor(color);
@@ -95,7 +101,7 @@ export const ProductItem: React.FC = () => {
   return (
     <div className="product">
       {currentPhone ? (
-        <>
+        <><>
           <h2 className="product__title">{currentPhone.name}</h2>
           <div className="grid">
             <div className="grid__item--tablet--1-7 grid__item--desktop--1-12 slider">
@@ -105,8 +111,7 @@ export const ProductItem: React.FC = () => {
                     src={`${hostName}${image}`}
                     alt={image}
                     className="product__main-image"
-                    key={image}
-                  />
+                    key={image} />
                 ))}
               </Slider>
             </div>
@@ -118,16 +123,14 @@ export const ProductItem: React.FC = () => {
                   {currentPhone?.colorsAvailable.map((color) => (
                     <button
                       className={cn('product__colors-selector', {
-                        'product__colors-selector--is-active':
-                          selectedColor === color
+                        'product__colors-selector--is-active': selectedColor === color
                       })}
                       key={color}
                       data-color={color}
                       style={{
                         backgroundColor: color
                       }}
-                      onClick={() => handleColorButtonClick(color)}
-                    />
+                      onClick={() => handleColorButtonClick(color)} />
                   ))}
                 </div>
               </section>
@@ -140,8 +143,7 @@ export const ProductItem: React.FC = () => {
                   <button
                     type="button"
                     className={cn('product__capacity-button', {
-                      'product__capacity-button--is-active':
-                        selectedCapacity === capacity
+                      'product__capacity-button--is-active': selectedCapacity === capacity
                     })}
                     key={capacity}
                     onClick={() => handleCapacityButtonClick(capacity)}
@@ -165,37 +167,52 @@ export const ProductItem: React.FC = () => {
               <section className="product__buy">
                 <Buttons id={currentPhone.id} />
               </section>
-
-              <ul className="card__descriptions">
-                <li className="card__description">
-                  <p className="card__description-left">Screen</p>
-                  <p className="card__description-right">
-                    {currentPhone.screen}
-                  </p>
-                </li>
-                <li className="card__description">
-                  <p className="card__description-left">Resolution</p>
-                  <p className="card__description-right">
-                    {currentPhone.resolution}
-                  </p>
-                </li>
-                <li className="card__description">
-                  <p className="card__description-left">Capacity</p>
-                  <p className="card__description-right">
-                    {currentPhone.capacity}
-                  </p>
-                </li>
-                <li className="card__description">
-                  <p className="card__description-left">RAM</p>
-                  <p className="card__description-right">{currentPhone.ram}</p>
-                </li>
-              </ul>
+              
+              <div className="product__short-specs">
+                <ul className="card__descriptions">
+                  <li className="card__description">
+                    <p className="card__description-left">Screen</p>
+                    <p className="card__description-right">
+                      {currentPhone.screen}
+                    </p>
+                  </li>
+                  <li className="card__description">
+                    <p className="card__description-left">Resolution</p>
+                    <p className="card__description-right">
+                      {currentPhone.resolution}
+                    </p>
+                  </li>
+                  <li className="card__description">
+                    <p className="card__description-left">Capacity</p>
+                    <p className="card__description-right">
+                      {currentPhone.capacity}
+                    </p>
+                  </li>
+                  <li className="card__description">
+                    <p className="card__description-left">RAM</p>
+                    <p className="card__description-right">{currentPhone.ram}</p>
+                  </li>
+                </ul>
+              </div>
+             
             </div>
             {/* <section className='product__id grid__item--desktop--23-24'>ID: 802390</section> */}
           </div>
+
+        </>
+        <div className="grid">
+          <div className="grid__item--tablet--1-12 grid__item--desktop--1-12">
+            {<About product={currentPhone} />}
+          </div>
+
+          <div className="grid__item--tablet--1-12 grid__item--desktop--14-24">
+            {<ProductTechSpecs specs={getSpecsFromProductData(currentPhone)} />}
+          </div>
+
+        </div>
         </>
       ) : (
-        <p>Loading...</p>
+        <Loader />
       )}
     </div>
   );
