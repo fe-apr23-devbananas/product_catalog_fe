@@ -10,7 +10,7 @@ interface Props {
 export const Catalog: React.FC<Props> = ({ products }) => {
   return (
     <div className="container">
-      <div className="catalog-grid">
+      <div className="catalog__grid">
         {products.map((product) => (
           <Card key={product.id} product={product} />
         ))}

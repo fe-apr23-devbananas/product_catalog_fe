@@ -1,3 +1,6 @@
 import React, { FC } from 'react';
+import { HomeSlider } from '../components/HomeSlider';
 
-export const HomePage: FC = () => <main>Homepage</main>;
+export const HomePage: FC = () => {
+  return <HomeSlider />;
+};
