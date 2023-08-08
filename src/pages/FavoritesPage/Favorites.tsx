@@ -26,7 +26,9 @@ export const FavoritesPage: FC = () => {
 
       <h1 className="favorites__title">Favorites</h1>
       <p className="favorites__quantity">
-        {filteredItems.length === 1 ? `${filteredItems.length} item` : `${filteredItems.length} items`}
+        {filteredItems.length === 1
+          ? `${filteredItems.length} item`
+          : `${filteredItems.length} items`}
       </p>
 
       <div className="favorites__wrapper">
@@ -35,7 +37,7 @@ export const FavoritesPage: FC = () => {
     </div>
   ) : (
     <div className={cn('empty__container')}>
-      <img src={emptyFav} alt="Empty Favorites" className='image' />
+      <img src={emptyFav} alt="Empty Favorites" className="image" />
       <h2 className={cn('empty__container--text', 'empty__title')}>
         {'Nothing here yet :('}
       </h2>
