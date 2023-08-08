@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { EmptyProducts } from '../components/EmptyProducts/EmptyProducts';
 
 //TEST!!!!!!
 
@@ -18,6 +19,6 @@ export const TabletsPage: FC = () => {
       })
       .finally(() => setIsLoading(false));
   }, []);
-
-  return <main>{loading ? <p>load</p> : data}</main>;
+  
+  return <EmptyProducts />;
 };

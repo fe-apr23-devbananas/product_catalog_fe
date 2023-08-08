@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { Catalog } from '../components/Catalog';
 import { useFetchData } from '../hooks/useFetchData';
 import { Product } from '../types/Product';
+import { Loader } from '../components/Loader/';
+import { EmptyProducts } from '../components/EmptyProducts/EmptyProducts';
 
 export const PhonesPage: FC = () => {
   const { isLoading, data: phones } = useFetchData<Product>();
@@ -13,9 +15,11 @@ export const PhonesPage: FC = () => {
       <div className="catalog__total-models">{phones.length} model(s)</div>
       <div>
         {isLoading ? (
-          <p>Loading...</p>
-        ) : (
+          <Loader />
+        ) : phones.length ? (
           <Catalog products={phones} />
+        ) : (
+          <EmptyProducts />
         )}
       </div>
     </React.Fragment>
