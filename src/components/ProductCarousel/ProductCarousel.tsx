@@ -1,17 +1,15 @@
 import React, { useRef } from 'react';
-import './CardRecommended.scss';
+import './ProductCarousel.scss';
 import { Card } from '../Card';
 import { Product } from '../../types/Product';
-// import { Phone } from '../../types/Phone';
 import './phones.json';
 
-/* eslint-disable */
 interface Props {
   title: string;
-  phones: Product[];
+  products: Product[];
 }
 
-export const CardRecommended: React.FC<Props> = ({ title, phones }) => {
+export const ProductCarousel: React.FC<Props> = ({ title, products }) => {
   const listRef = useRef<HTMLDivElement | null>(null);
 
   const handlePrevClick = () => {
@@ -51,8 +49,8 @@ export const CardRecommended: React.FC<Props> = ({ title, phones }) => {
 
       <div className="recommended__content" ref={listRef}>
         <div className="recommended__scroll-wrapper">
-          {phones.map((phone) => (
-            <Card key={phone.id} product={phone} />
+          {products.map((product) => (
+            <Card key={product.id} product={product} />
           ))}
         </div>
       </div>
