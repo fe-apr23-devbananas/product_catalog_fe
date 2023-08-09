@@ -1,20 +1,26 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, FC, useState } from 'react';
 import { SelectSection } from '../SelectSection/SelectSection';
 import { useFetchData } from '../../hooks/useFetchData';
 import { Product } from '../../types/Product';
 import { Catalog } from '../Catalog';
 import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../Loader';
-// import { QueryParams } from '../../types/QueryParams';
+import './ProductList.scss';
 
 const defaultQuery = {
   limit: '8',
   offset: '0',
-  sortBy: 'itemId'
+  sortBy: 'year'
 };
 
-export const ProductList = () => {
+type Props = {
+  productType: string,
+  title: string,
+};
+
+export const ProductList: FC<Props> = ({ productType, title }) => {
   const [query, setQuery] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(1);
 
   const queryParams = useMemo(() => {
     const params = {
@@ -22,6 +28,12 @@ export const ProductList = () => {
       offset: query.get('offset') || defaultQuery.offset,
       sortBy: query.get('sortBy') || defaultQuery.sortBy
     };
+
+    console.log(params.offset, params.limit);
+    const pageNumber = (Number(params.offset) / Number(params.limit)) + 1;
+    console.log(pageNumber, 'as page num');
+
+    setCurrentPage(pageNumber);
 
     return params;
   }, [query]);
@@ -43,34 +55,94 @@ export const ProductList = () => {
     isLoading,
     count,
     data: phones
-  } = useFetchData<Product>('phones', queryString);
+  } = useFetchData<Product>(productType, queryString);
 
   const numberOfPages = count / +queryParams.limit;
-
   const numberOfPagesArray = Array.from({ length: numberOfPages }, (_, i) => i);
 
-  const handler = (event: React.MouseEvent) => {
+  const handleChangePage = (event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
-    const page = target.getAttribute('data-value') || '1';
-    const offset = `${Number(queryParams.limit) * Number(page)}`;
+    let page = target.getAttribute('data-value') || '1';
+
+
+    if (isNaN(+page)) {
+      page = page === 'prev'
+        ? (currentPage - 1).toString()
+        : (currentPage + 1).toString();
+
+      console.log(page, 'num');
+
+    }
+    const offset = `${Number(queryParams.limit) * (Number(page) - 1)}`;
 
     setQuery({
       offset
     });
   };
 
+  const handleChangeLimit = (lim: string) => {
+    setQuery({
+      limit: lim
+    });
+  };
+  const handleChangeSortBy = (sort: string) => {
+    setQuery({
+      sortBy: sort
+    });
+  };
+
   return (
-    <>
-      <div>
-        <SelectSection />
-      </div>
-      {isLoading ? <Loader /> : <Catalog products={phones} />}
-      {numberOfPagesArray.map((page) => (
-        <button onClick={handler} data-value={`${page}`} key={page}>
-          {page + 1}
-        </button>
-      ))}
-      ;
-    </>
+    <section>
+      <div className="productList__title">{title}</div>
+      <div className="productList__total-models">{count} model(s)</div>
+      <SelectSection
+        selectedPerPage={{
+          value: queryParams.limit,
+          label: queryParams.limit
+        }}
+        selectedSortBy={{
+          value: queryParams.sortBy,
+          label: queryParams.sortBy
+        }}
+        perPageChangeHandler={handleChangeLimit}
+        sortChangeHandler={handleChangeSortBy}
+
+      />
+      {isLoading
+        ? <Loader />
+        : (
+          <>
+            <Catalog products={phones} />
+            <div className='productList__button-block'>
+              <button
+                onClick={handleChangePage}
+                data-value={'prev'}
+                disabled={currentPage === 1}
+              >
+                &lsaquo;
+              </button>
+              {numberOfPagesArray.map((page) => (
+                <button
+                  onClick={handleChangePage}
+                  data-value={`${page}`}
+                  disabled={currentPage === (page + 1)}
+                  key={page}
+                >
+                  {page + 1}
+                </button>
+              ))}
+              <button
+                onClick={handleChangePage}
+                data-value={'next'}
+                disabled={currentPage === numberOfPages}
+              >
+                &rsaquo;
+              </button>
+            </div>
+          </>
+        )
+      }
+
+    </section>
   );
 };

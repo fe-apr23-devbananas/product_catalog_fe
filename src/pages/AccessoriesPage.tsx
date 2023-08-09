@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
-import { EmptyProducts } from '../components/EmptyProducts/EmptyProducts';
+import { ProductList } from '../components/ProductList/ProductList';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const AccessoriesPage: FC = () => {
   return (
-    <>
+    <main>
       <Breadcrumbs>
         <Typography>Accessories</Typography>
       </Breadcrumbs>
-      <EmptyProducts />
-    </>
+      <ProductList productType={'accessories'} title={'Accessories'} />;
+    </main>
   );
 };
