@@ -13,7 +13,7 @@ const API_URL = 'https://devbananas-products-api.onrender.com/';
 export const Card: FC<Props> = ({ product }) => {
   return (
     <article className="card">
-      <Link to={`${product.itemId}`} className="card__top">
+      <Link to={`/${product.category}/${product.itemId}`} className="card__top">
         <img
           className="card__photo"
           src={`${API_URL}${product.image}`}
