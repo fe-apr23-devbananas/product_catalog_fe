@@ -8,7 +8,8 @@ import { useFetchData } from '../../hooks/useFetchData';
 import { ProductDetails } from '../../types/ProductDetails';
 
 export const Categories: React.FC = () => {
-  const { data: phones } = useFetchData<ProductDetails>();
+  const { count: countPhones } = useFetchData<ProductDetails>();
+  const { count: countTablets } = useFetchData<ProductDetails>('tablets');
 
   return (
     <>
@@ -21,13 +22,13 @@ export const Categories: React.FC = () => {
               path="/phones"
               img={catImgPhone}
               title="Mobile phones"
-              quantity={phones.length}
+              quantity={countPhones}
             />
             <CategoryCard
               path="/tablets"
               img={catImgTablet}
               title="Tablets"
-              quantity={0}
+              quantity={countTablets}
             />
             <CategoryCard
               path="/accessories"
