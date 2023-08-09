@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductDetails } from '../types/ProductDetails';
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://devbananas-products-api.onrender.com';
 
 //* for each page, just need to change <TData> products/phones/accessories/tablets
 
@@ -37,7 +37,6 @@ export const useFetchData = <TData>(
     })(); //IIFE
   }, []);
 
-  // console.log(data);
   return { isLoading, data, count };
 };
 
