@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { HomeSlider } from '../components/HomeSlider';
 import { ProductCarousel } from '../components/ProductCarousel';
 import { useGetSpecial } from '../hooks/useFetchData';
 import { Loader } from '../components/Loader';
 
-export const HomePage: FC = () => {
+export const HomePage: React.FC = () => {
   const { isLoading: isLoadingNewest, data: newest } = useGetSpecial('new');
   const { isLoading: isLoadingdiscounts, data: discounts } =
     useGetSpecial('discounts');

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Catalog } from '../components/Catalog';
 import { useFetchData } from '../hooks/useFetchData';
 import { Product } from '../types/Product';
@@ -7,7 +7,7 @@ import { EmptyProducts } from '../components/EmptyProducts/EmptyProducts';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
-export const PhonesPage: FC = () => {
+export const PhonesPage: React.FC = () => {
   const { isLoading, data: phones } = useFetchData<Product>();
 
   return (

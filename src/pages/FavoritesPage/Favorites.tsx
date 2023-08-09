@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import './Favorites.scss';
 import { useFetchData } from '../../hooks/useFetchData';
 import { Product } from '../../types/Product';
@@ -11,7 +11,7 @@ import emptyFav from '../../assets/icons/emptyFav.png';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
-export const FavoritesPage: FC = () => {
+export const FavoritesPage: React.FC = () => {
   const { data: phones } = useFetchData<Product>();
 
   const favoriteItems = useAppSelector(selectFavorites);
