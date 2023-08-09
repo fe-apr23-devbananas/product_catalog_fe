@@ -16,15 +16,11 @@ export const useFetchData = <TData>(
   const type = productType || 'phones';
   const query = queryString || '';
 
-  console.log(`${BASE_URL}/${type}${query}`);
-
   useEffect(() => {
     (async () => {
       setIsLoading(true);
       const response = await fetch(`${BASE_URL}/${type}${query}`);
       const data = await response.json();
-
-      console.log(data.rows);
 
       if (data.rows) {
         setData(data.rows as TData[]);
@@ -35,7 +31,7 @@ export const useFetchData = <TData>(
 
       setIsLoading(false);
     })(); //IIFE
-  }, []);
+  }, [queryString]);
 
   return { isLoading, data, count };
 };
