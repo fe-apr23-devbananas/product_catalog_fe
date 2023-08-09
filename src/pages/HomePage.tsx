@@ -5,7 +5,7 @@ import { useGetSpecial } from '../hooks/useFetchData';
 import { Categories } from '../components/Categories/Categories';
 import { Loader } from '../components/Loader';
 
-export const HomePage: FC = () => {
+export const HomePage: React.FC = () => {
   const { isLoading: isLoadingNewest, data: newest } = useGetSpecial('new');
   const { isLoading: isLoadingdiscounts, data: discounts } =
     useGetSpecial('discounts');
