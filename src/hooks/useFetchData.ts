@@ -5,18 +5,26 @@ const BASE_URL = 'http://localhost:5000';
 
 //* for each page, just need to change <TData> products/phones/accessories/tablets
 
-export const useFetchData = <TData>(productType?: string) => {
+export const useFetchData = <TData>(
+  productType?: string,
+  queryString?: string
+) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<TData[]>([]);
   const [count, setCount] = useState(0);
 
   const type = productType || 'phones';
+  const query = queryString || '';
+
+  console.log(`${BASE_URL}/${type}${query}`);
 
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      const response = await fetch(`${BASE_URL}/${type}`);
+      const response = await fetch(`${BASE_URL}/${type}${query}`);
       const data = await response.json();
+
+      console.log(data.rows);
 
       if (data.rows) {
         setData(data.rows as TData[]);
