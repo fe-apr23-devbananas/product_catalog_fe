@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { HomeSlider } from '../components/HomeSlider';
 import { ProductCarousel } from '../components/ProductCarousel';
 import { useGetSpecial } from '../hooks/useFetchData';
 import { Categories } from '../components/Categories/Categories';
 import { Loader } from '../components/Loader';
+import { Promo } from '../components/Promo/Promo';
 
 export const HomePage: FC = () => {
   const { isLoading: isLoadingNewest, data: newest } = useGetSpecial('new');
@@ -12,7 +12,7 @@ export const HomePage: FC = () => {
 
   return (
     <main>
-      <HomeSlider />
+      <Promo />
       {isLoadingNewest ? (
         <Loader />
       ) : (
