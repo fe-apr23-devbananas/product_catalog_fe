@@ -14,8 +14,8 @@ const defaultQuery = {
 };
 
 type Props = {
-  productType: string,
-  title: string,
+  productType: string;
+  title: string;
 };
 
 export const ProductList: FC<Props> = ({ productType, title }) => {
@@ -30,7 +30,7 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
     };
 
     console.log(params.offset, params.limit);
-    const pageNumber = (Number(params.offset) / Number(params.limit)) + 1;
+    const pageNumber = Number(params.offset) / Number(params.limit) + 1;
     console.log(pageNumber, 'as page num');
 
     setCurrentPage(pageNumber);
@@ -64,14 +64,13 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
     const target = event.target as HTMLElement;
     let page = target.getAttribute('data-value') || '1';
 
-
     if (isNaN(+page)) {
-      page = page === 'prev'
-        ? (currentPage - 1).toString()
-        : (currentPage + 1).toString();
+      page =
+        page === 'prev'
+          ? (currentPage - 1).toString()
+          : (currentPage + 1).toString();
 
       console.log(page, 'num');
-
     }
     const offset = `${Number(queryParams.limit) * (Number(page) - 1)}`;
 
@@ -106,43 +105,40 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
         }}
         perPageChangeHandler={handleChangeLimit}
         sortChangeHandler={handleChangeSortBy}
-
       />
-      {isLoading
-        ? <Loader />
-        : (
-          <>
-            <Catalog products={phones} />
-            <div className='productList__button-block'>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Catalog products={phones} />
+          <div className="productList__button-block">
+            <button
+              onClick={handleChangePage}
+              data-value={'prev'}
+              disabled={currentPage === 1}
+            >
+              &lsaquo;
+            </button>
+            {numberOfPagesArray.map((page) => (
               <button
                 onClick={handleChangePage}
-                data-value={'prev'}
-                disabled={currentPage === 1}
+                data-value={`${page}`}
+                disabled={currentPage === page + 1}
+                key={page}
               >
-                &lsaquo;
+                {page + 1}
               </button>
-              {numberOfPagesArray.map((page) => (
-                <button
-                  onClick={handleChangePage}
-                  data-value={`${page}`}
-                  disabled={currentPage === (page + 1)}
-                  key={page}
-                >
-                  {page + 1}
-                </button>
-              ))}
-              <button
-                onClick={handleChangePage}
-                data-value={'next'}
-                disabled={currentPage === numberOfPages}
-              >
-                &rsaquo;
-              </button>
-            </div>
-          </>
-        )
-      }
-
+            ))}
+            <button
+              onClick={handleChangePage}
+              data-value={'next'}
+              disabled={currentPage === numberOfPages}
+            >
+              &rsaquo;
+            </button>
+          </div>
+        </>
+      )}
     </section>
   );
 };

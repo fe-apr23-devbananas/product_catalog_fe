@@ -56,7 +56,7 @@ export const Buttons: FC<Props> = ({ id }) => {
             color: '#4219D0',
             padding: '0',
             marginRight: '8px',
-            textAlign:'center'
+            textAlign: 'center'
           }}
           onClick={() => changeButtonCartHandler()}
         >
@@ -75,7 +75,7 @@ export const Buttons: FC<Props> = ({ id }) => {
             lineHeight: '21px',
             padding: '0',
             marginRight: '8px',
-            textAlign:'center'
+            textAlign: 'center'
           }}
           onClick={() => changeButtonCartHandler()}
         >

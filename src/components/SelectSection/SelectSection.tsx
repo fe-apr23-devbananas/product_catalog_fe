@@ -44,8 +44,7 @@ export const SelectSection: FC<Props> = ({
               value={selectedSortBy}
               onChange={(newValue: SingleValue<OptionType>) => {
                 sortChangeHandler(newValue?.value);
-              }
-              }
+              }}
               isMulti={false}
               options={sortByOptions}
               styles={colorStyles}
@@ -54,12 +53,10 @@ export const SelectSection: FC<Props> = ({
           <div className="select__sort">
             <p className="select__sort--name">Items on page</p>
             <Select
-
               value={selectedPerPage}
               onChange={(newValue: SingleValue<OptionType>) => {
                 perPageChangeHandler(newValue?.value);
-              }
-              }
+              }}
               isMulti={false}
               options={perPageOptions}
               styles={colorStyles}

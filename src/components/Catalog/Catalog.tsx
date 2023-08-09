@@ -25,11 +25,9 @@ interface Props {
   products: Product[];
 }
 
-export const Catalog: React.FC<Props> = ({
-  products,
-}) => {
+export const Catalog: React.FC<Props> = ({ products }) => {
   return (
-    <section className='catalog__grid'>
+    <section className="catalog__grid">
       {products.map((product) => (
         <Card key={product.id} product={product} />
       ))}
