@@ -221,7 +221,10 @@ export const ProductItem: React.FC = () => {
           {isLoadingRecommendations ? (
             <Loader />
           ) : (
-            <ProductCarousel title="You may like" products={recommendedItems} />
+            <ProductCarousel
+              title="You may also like"
+              products={recommendedItems}
+            />
           )}
         </div>
       </div>

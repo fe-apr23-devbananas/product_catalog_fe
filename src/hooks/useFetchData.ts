@@ -86,3 +86,20 @@ export const useGetItemById = (productType: string, itemSlug: string) => {
 
   return { isLoading, data };
 };
+
+export const useGetSpecial = (type: string) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const response = await fetch(`${BASE_URL}/products/${type}`);
+      const data = await response.json();
+      setData(data);
+      setIsLoading(false);
+    })(); //IIFE
+  }, []);
+
+  return { isLoading, data };
+};
