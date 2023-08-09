@@ -49,14 +49,14 @@ export const Buttons: FC<Props> = ({ id }) => {
           style={{
             background: '#fff',
             borderRadius: '48px',
-            transition: 'all 0.5s linear 0s',
+            transition: 'box-shadow 0.5s linear 0s',
             fontWeight: '700',
             lineHeight: '21px',
             border: '1px solid #E2E6E9',
             color: '#4219D0',
-            width: '75%',
-            height: '40px',
-            marginRight: '8px'
+            padding: '0',
+            marginRight: '8px',
+            textAlign:'center'
           }}
           onClick={() => changeButtonCartHandler()}
         >
@@ -70,12 +70,12 @@ export const Buttons: FC<Props> = ({ id }) => {
           style={{
             background: '#4219D0',
             borderRadius: '48px',
-            transition: 'all 0.5s linear 0s',
+            transition: 'box-shadow 0.5s linear 0s',
             fontWeight: '700',
             lineHeight: '21px',
-            width: '75%',
-            height: '40px',
-            marginRight: '8px'
+            padding: '0',
+            marginRight: '8px',
+            textAlign:'center'
           }}
           onClick={() => changeButtonCartHandler()}
         >
