@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { SelectSection } from '../SelectSection/SelectSection';
 import { useFetchData } from '../../hooks/useFetchData';
 import { Product } from '../../types/Product';
@@ -15,11 +15,16 @@ const defaultQuery = {
 
 export const ProductList = () => {
   const [query, setQuery] = useSearchParams();
-  const [queryParams, setQueryParams] = useState({
-    limit: query.get('limit') || defaultQuery.limit,
-    offset: query.get('offset') || defaultQuery.offset,
-    sortBy: query.get('sortBy') || defaultQuery.sortBy
-  });
+
+  const queryParams = useMemo(() => {
+    const params = {
+      limit: query.get('limit') || defaultQuery.limit,
+      offset: query.get('offset') || defaultQuery.offset,
+      sortBy: query.get('sortBy') || defaultQuery.sortBy
+    };
+
+    return params;
+  }, [query]);
 
   const queryString = useMemo(() => {
     let newQueryString = '?';
@@ -34,17 +39,23 @@ export const ProductList = () => {
     return newQueryString;
   }, [queryParams]);
 
-  const { isLoading, data: phones } = useFetchData<Product>(
-    'phones',
-    queryString
-  );
+  const {
+    isLoading,
+    count,
+    data: phones
+  } = useFetchData<Product>('phones', queryString);
 
-  const handler = () => {
-    setQuery();
-    setQueryParams({
-      limit: '10',
-      offset: '1',
-      sortBy: 'name'
+  const numberOfPages = count / +queryParams.limit;
+
+  const numberOfPagesArray = Array.from({ length: numberOfPages }, (_, i) => i);
+
+  const handler = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    const page = target.getAttribute('data-value') || '1';
+    const offset = `${Number(queryParams.limit) * Number(page)}`;
+
+    setQuery({
+      offset
     });
   };
 
@@ -54,7 +65,12 @@ export const ProductList = () => {
         <SelectSection />
       </div>
       {isLoading ? <Loader /> : <Catalog products={phones} />}
-      <button onClick={handler}>x</button>
+      {numberOfPagesArray.map((page) => (
+        <button onClick={handler} data-value={`${page}`} key={page}>
+          {page + 1}
+        </button>
+      ))}
+      ;
     </>
   );
 };
