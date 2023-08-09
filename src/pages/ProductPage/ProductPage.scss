@@ -134,9 +134,7 @@
   }
 
   &__buy {
-    @include onTablet {
-      margin-bottom: 32px;
-    }
+    margin-bottom: 32px;
   }
 
   &__short-specs {

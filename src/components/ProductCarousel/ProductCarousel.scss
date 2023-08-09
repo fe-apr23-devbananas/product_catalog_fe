@@ -1,5 +1,6 @@
 @import '../../styles/utils/mixins';
 @import '../../styles/utils/variables';
+@import '../../styles/utils/placeholders';
 
 .recommended {
   &__top {
@@ -10,8 +11,7 @@
   }
 
   &__title {
-    font-size: 22px;
-    font-weight: 800;
+    @extend %h2;
     color: $primary-color;
   }
 
