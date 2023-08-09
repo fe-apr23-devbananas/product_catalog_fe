@@ -52,9 +52,16 @@
   }
 
   &__wrapper {
+    margin-bottom: 56px;
+
     @include onTablet {
       padding-left: 51px;
       padding-right: 51px;
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
     }
   }
 }
