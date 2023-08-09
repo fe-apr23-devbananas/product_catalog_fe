@@ -43,13 +43,3 @@
     }
   }
 }
-
-.breadcrumbs {
-  height: 16px;
-  background-color: beige;
-  margin-bottom: 24px;
-
-  @include onTablet {
-    margin-bottom: 40px;
-  }
-}
