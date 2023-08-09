@@ -6,6 +6,7 @@ import { Catalog } from '../Catalog';
 import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../Loader';
 import './ProductList.scss';
+import classNames from 'classnames';
 
 const defaultQuery = {
   limit: '8',
@@ -29,9 +30,7 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
       sortBy: query.get('sortBy') || defaultQuery.sortBy
     };
 
-    console.log(params.offset, params.limit);
     const pageNumber = Number(params.offset) / Number(params.limit) + 1;
-    console.log(pageNumber, 'as page num');
 
     setCurrentPage(pageNumber);
 
@@ -62,17 +61,17 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
 
   const handleChangePage = (event: React.MouseEvent) => {
     const target = event.target as HTMLElement;
-    let page = target.getAttribute('data-value') || '1';
+    let page = target.getAttribute('data-value');
+    let offset = `${Number(queryParams.limit) * Number(page)}`;
 
-    if (isNaN(+page)) {
+    if (page && isNaN(+page)) {
       page =
         page === 'prev'
           ? (currentPage - 1).toString()
           : (currentPage + 1).toString();
 
-      console.log(page, 'num');
+      offset = `${Number(queryParams.limit) * Number(+page - 1)}`;
     }
-    const offset = `${Number(queryParams.limit) * (Number(page) - 1)}`;
 
     setQuery({
       offset
@@ -106,39 +105,41 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
         perPageChangeHandler={handleChangeLimit}
         sortChangeHandler={handleChangeSortBy}
       />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <Catalog products={phones} />
-          <div className="productList__button-block">
-            <button
-              onClick={handleChangePage}
-              data-value={'prev'}
-              disabled={currentPage === 1}
-            >
-              &lsaquo;
-            </button>
-            {numberOfPagesArray.map((page) => (
-              <button
-                onClick={handleChangePage}
-                data-value={`${page}`}
-                disabled={currentPage === page + 1}
-                key={page}
-              >
-                {page + 1}
-              </button>
-            ))}
-            <button
-              onClick={handleChangePage}
-              data-value={'next'}
-              disabled={currentPage === numberOfPages}
-            >
-              &rsaquo;
-            </button>
-          </div>
-        </>
-      )}
+      {isLoading ? <Loader /> : <Catalog products={phones} />}
+      <div className="productList__buttons-block">
+        <button
+          onClick={handleChangePage}
+          className="productList__button productList__button--adjust"
+          data-value={'prev'}
+          disabled={currentPage === 1}
+        >
+          &lsaquo;
+        </button>
+        {numberOfPagesArray.map((page) => (
+          <button
+            onClick={handleChangePage}
+            className={classNames(
+              'productList__button productList__button--page',
+              {
+                'productList__button--page--active': currentPage === page + 1
+              }
+            )}
+            data-value={`${page}`}
+            disabled={currentPage === page + 1}
+            key={page}
+          >
+            {page + 1}
+          </button>
+        ))}
+        <button
+          onClick={handleChangePage}
+          className="productList__button productList__button--adjust"
+          data-value={'next'}
+          disabled={currentPage === numberOfPages}
+        >
+          &rsaquo;
+        </button>
+      </div>
     </section>
   );
 };

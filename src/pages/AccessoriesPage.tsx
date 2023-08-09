@@ -9,7 +9,7 @@ export const AccessoriesPage: FC = () => {
       <Breadcrumbs>
         <Typography>Accessories</Typography>
       </Breadcrumbs>
-      <ProductList productType={'accessories'} title={'Accessories'} />;
+      <ProductList productType={'accessories'} title={'Accessories'} />
     </main>
   );
 };
