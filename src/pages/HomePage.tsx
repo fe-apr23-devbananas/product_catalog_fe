@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { HomeSlider } from '../components/HomeSlider';
 import { ProductCarousel } from '../components/ProductCarousel';
 import { useGetSpecial } from '../hooks/useFetchData';

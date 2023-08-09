@@ -16,7 +16,7 @@ export const PhonesPage: React.FC = () => {
         <Typography>Phones</Typography>
       </Breadcrumbs>
       <div className="catalog__title">Mobile phones</div>
-      <div className="catalog__total-models">{phones.length} models</div>
+      <div className="catalog__total-models">{count} model(s)</div>
       <div>
         {isLoading ? (
           <Loader />
