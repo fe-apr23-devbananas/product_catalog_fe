@@ -8,7 +8,7 @@ import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const PhonesPage: React.FC = () => {
-  const { isLoading, data: phones } = useFetchData<Product>();
+  const { isLoading, count, data: phones } = useFetchData<Product>();
 
   return (
     <React.Fragment>
