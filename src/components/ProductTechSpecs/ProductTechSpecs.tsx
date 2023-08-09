@@ -39,6 +39,5 @@ export const ProductTechSpecs: FC<Props> = ({ specs, className }) => {
         })}
       </ul>
     </div>
-
   );
 };

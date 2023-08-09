@@ -101,115 +101,123 @@ export const ProductItem: React.FC = () => {
   return (
     <div className="product">
       {currentPhone ? (
-        <><>
-          <h2 className="product__title">{currentPhone.name}</h2>
-          <div className="grid">
-            <div className="grid__item--tablet--1-7 grid__item--desktop--1-12 slider">
-              <Slider {...settings}>
-                {images.map((image) => (
-                  <img
-                    src={`${hostName}${image}`}
-                    alt={image}
-                    className="product__main-image"
-                    key={image} />
-                ))}
-              </Slider>
-            </div>
-
-            <div className="product__actions grid__item--tablet--8-12 grid__item--desktop--14-20">
-              <section className="product__colors">
-                <p className="product__colors-title">Available colors</p>
-                <div className="product__colors-buttons">
-                  {currentPhone?.colorsAvailable.map((color) => (
-                    <button
-                      className={cn('product__colors-selector', {
-                        'product__colors-selector--is-active': selectedColor === color
-                      })}
-                      key={color}
-                      data-color={color}
-                      style={{
-                        backgroundColor: color
-                      }}
-                      onClick={() => handleColorButtonClick(color)} />
+        <>
+          <>
+            <h2 className="product__title">{currentPhone.name}</h2>
+            <div className="grid">
+              <div className="grid__item--tablet--1-7 grid__item--desktop--1-12 slider">
+                <Slider {...settings}>
+                  {images.map((image) => (
+                    <img
+                      src={`${hostName}${image}`}
+                      alt={image}
+                      className="product__main-image"
+                      key={image}
+                    />
                   ))}
-                </div>
-              </section>
-
-              <div className="product__line"></div>
-
-              <section className="product__capacity">
-                <p className="product__capacity-title">Select capacity</p>
-                {currentPhone.capacityAvailable.map((capacity) => (
-                  <button
-                    type="button"
-                    className={cn('product__capacity-button', {
-                      'product__capacity-button--is-active': selectedCapacity === capacity
-                    })}
-                    key={capacity}
-                    onClick={() => handleCapacityButtonClick(capacity)}
-                  >
-                    {capacity}
-                  </button>
-                ))}
-              </section>
-
-              <div className="product__line"></div>
-
-              <section className="product__price">
-                <h2 className="product__price-actual">
-                  ${currentPhone.priceDiscount}
-                </h2>
-                <p className="product__price-full">
-                  ${currentPhone.priceRegular}
-                </p>
-              </section>
-
-              <section className="product__buy">
-                <Buttons id={currentPhone.id} />
-              </section>
-              
-              <div className="product__short-specs">
-                <ul className="card__descriptions">
-                  <li className="card__description">
-                    <p className="card__description-left">Screen</p>
-                    <p className="card__description-right">
-                      {currentPhone.screen}
-                    </p>
-                  </li>
-                  <li className="card__description">
-                    <p className="card__description-left">Resolution</p>
-                    <p className="card__description-right">
-                      {currentPhone.resolution}
-                    </p>
-                  </li>
-                  <li className="card__description">
-                    <p className="card__description-left">Capacity</p>
-                    <p className="card__description-right">
-                      {currentPhone.capacity}
-                    </p>
-                  </li>
-                  <li className="card__description">
-                    <p className="card__description-left">RAM</p>
-                    <p className="card__description-right">{currentPhone.ram}</p>
-                  </li>
-                </ul>
+                </Slider>
               </div>
-             
+
+              <div className="product__actions grid__item--tablet--8-12 grid__item--desktop--14-20">
+                <section className="product__colors">
+                  <p className="product__colors-title">Available colors</p>
+                  <div className="product__colors-buttons">
+                    {currentPhone?.colorsAvailable.map((color) => (
+                      <button
+                        className={cn('product__colors-selector', {
+                          'product__colors-selector--is-active':
+                            selectedColor === color
+                        })}
+                        key={color}
+                        data-color={color}
+                        style={{
+                          backgroundColor: color
+                        }}
+                        onClick={() => handleColorButtonClick(color)}
+                      />
+                    ))}
+                  </div>
+                </section>
+
+                <div className="product__line"></div>
+
+                <section className="product__capacity">
+                  <p className="product__capacity-title">Select capacity</p>
+                  {currentPhone.capacityAvailable.map((capacity) => (
+                    <button
+                      type="button"
+                      className={cn('product__capacity-button', {
+                        'product__capacity-button--is-active':
+                          selectedCapacity === capacity
+                      })}
+                      key={capacity}
+                      onClick={() => handleCapacityButtonClick(capacity)}
+                    >
+                      {capacity}
+                    </button>
+                  ))}
+                </section>
+
+                <div className="product__line"></div>
+
+                <section className="product__price">
+                  <h2 className="product__price-actual">
+                    ${currentPhone.priceDiscount}
+                  </h2>
+                  <p className="product__price-full">
+                    ${currentPhone.priceRegular}
+                  </p>
+                </section>
+
+                <section className="product__buy">
+                  <Buttons id={currentPhone.id} />
+                </section>
+
+                <div className="product__short-specs">
+                  <ul className="card__descriptions">
+                    <li className="card__description">
+                      <p className="card__description-left">Screen</p>
+                      <p className="card__description-right">
+                        {currentPhone.screen}
+                      </p>
+                    </li>
+                    <li className="card__description">
+                      <p className="card__description-left">Resolution</p>
+                      <p className="card__description-right">
+                        {currentPhone.resolution}
+                      </p>
+                    </li>
+                    <li className="card__description">
+                      <p className="card__description-left">Capacity</p>
+                      <p className="card__description-right">
+                        {currentPhone.capacity}
+                      </p>
+                    </li>
+                    <li className="card__description">
+                      <p className="card__description-left">RAM</p>
+                      <p className="card__description-right">
+                        {currentPhone.ram}
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {/* <section className='product__id grid__item--desktop--23-24'>ID: 802390</section> */}
             </div>
-            {/* <section className='product__id grid__item--desktop--23-24'>ID: 802390</section> */}
-          </div>
+          </>
+          <div className="grid">
+            <div className="grid__item--tablet--1-12 grid__item--desktop--1-12">
+              {<About product={currentPhone} />}
+            </div>
 
-        </>
-        <div className="grid">
-          <div className="grid__item--tablet--1-12 grid__item--desktop--1-12">
-            {<About product={currentPhone} />}
+            <div className="grid__item--tablet--1-12 grid__item--desktop--14-24">
+              {
+                <ProductTechSpecs
+                  specs={getSpecsFromProductData(currentPhone)}
+                />
+              }
+            </div>
           </div>
-
-          <div className="grid__item--tablet--1-12 grid__item--desktop--14-24">
-            {<ProductTechSpecs specs={getSpecsFromProductData(currentPhone)} />}
-          </div>
-
-        </div>
         </>
       ) : (
         <Loader />

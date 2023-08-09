@@ -12,7 +12,7 @@ export const PhonesPage: FC = () => {
     <React.Fragment>
       <div className="breadcrumbs">there will be breadcrumbs</div>
       <div className="catalog__title">Mobile phones</div>
-      <div className="catalog__total-models">{phones.length} model(s)</div>
+      <div className="catalog__total-models">{phones.length} models</div>
       <div>
         {isLoading ? (
           <Loader />
