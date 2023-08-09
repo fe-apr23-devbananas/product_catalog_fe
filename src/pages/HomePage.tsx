@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
-import { HomeSlider } from '../components/HomeSlider';
 import { ProductCarousel } from '../components/ProductCarousel';
 import { useGetSpecial } from '../hooks/useFetchData';
+import { Categories } from '../components/Categories/Categories';
 import { Loader } from '../components/Loader';
 
 export const HomePage: FC = () => {
@@ -17,6 +16,7 @@ export const HomePage: FC = () => {
       ) : (
         <ProductCarousel title="Brand new models" products={newest} />
       )}
+      <Categories />
       {isLoadingdiscounts ? (
         <Loader />
       ) : (
