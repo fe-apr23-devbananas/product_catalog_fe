@@ -1,16 +1,20 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Catalog } from '../components/Catalog';
 import { useFetchData } from '../hooks/useFetchData';
 import { Product } from '../types/Product';
 import { Loader } from '../components/Loader/';
 import { EmptyProducts } from '../components/EmptyProducts/EmptyProducts';
+import { Typography } from '@mui/material';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
-export const PhonesPage: FC = () => {
+export const PhonesPage: React.FC = () => {
   const { isLoading, data: phones } = useFetchData<Product>();
 
   return (
     <React.Fragment>
-      <div className="breadcrumbs">there will be breadcrumbs</div>
+      <Breadcrumbs>
+        <Typography>Phones</Typography>
+      </Breadcrumbs>
       <div className="catalog__title">Mobile phones</div>
       <div className="catalog__total-models">{phones.length} models</div>
       <div>

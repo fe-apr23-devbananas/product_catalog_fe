@@ -22,7 +22,11 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="footer__container__links">
-          <Link to="https://github.com/fe-apr23-devbananas" className="link">
+          <Link
+            to="https://github.com/fe-apr23-devbananas"
+            className="link"
+            target="_blank"
+          >
             github
           </Link>
           <Link to="/contacts" className="link">
