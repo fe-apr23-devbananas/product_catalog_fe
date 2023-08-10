@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './SearchBar.scss';
-// import debounce from 'lodash/debounce';
+import debounce from 'lodash/debounce';
 
 const products = ['Product 1', 'Product 2', 'Product 3'];
 
 export const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState<string[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newSearchTerm = event.target.value;
-    setSearchTerm(newSearchTerm);
-  };
-
-  const filteredProducts = products.filter((product) =>
-    product.toLowerCase().includes(searchTerm.toLowerCase())
+  const debouncedApplyQuery = useCallback(
+    debounce((query: string) => {
+      const filtered = products.filter(product =>
+        product.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+      setShowDropdown(query.length > 0);
+    }, 500),
+    []
   );
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+    debouncedApplyQuery(event.target.value);
+  };
 
   return (
     <div className="search__bar">
@@ -23,10 +32,10 @@ export const SearchBar: React.FC = () => {
         className="search__input"
         placeholder="Search..."
         value={searchTerm}
-        onChange={handleInputChange}
+        onChange={handleChange}
       />
 
-      {searchTerm.length > 0 && (
+      {showDropdown && searchTerm.length > 0 && (
         <ul className="search__results">
           {filteredProducts.map((product, index) => (
             <li key={index} className="search__result">
@@ -36,7 +45,7 @@ export const SearchBar: React.FC = () => {
         </ul>
       )}
 
-      {filteredProducts.length === 0 && (
+      {showDropdown && filteredProducts.length === 0 && (
         <ul className="search__results">
           <li className="search__no-results" data-visible="true">
             No matching results
