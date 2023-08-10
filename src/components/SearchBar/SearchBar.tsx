@@ -44,27 +44,20 @@ export const SearchBar: React.FC = () => {
       {showDropdown && searchTerm.length > 0 && (
         <ul className="search__results">
           {products.map((product, index) => (
-            <Link
-              to={`/${product.category}/${product.itemId}`}
-              key={index}>
-              <li className="search__result">
-                {product.name}
-              </li>
+            <Link to={`/${product.category}/${product.itemId}`} key={index}>
+              <li className="search__result">{product.name}</li>
             </Link>
           ))}
         </ul>
-      )
-      }
+      )}
 
-      {
-        showDropdown && products.length === 0 && (
-          <ul className="search__results">
-            <li className="search__no-results" data-visible="true">
-              No matching results
-            </li>
-          </ul>
-        )
-      }
-    </div >
+      {showDropdown && products.length === 0 && (
+        <ul className="search__results">
+          <li className="search__no-results" data-visible="true">
+            No matching results
+          </li>
+        </ul>
+      )}
+    </div>
   );
 };
