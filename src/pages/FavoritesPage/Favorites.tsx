@@ -26,7 +26,7 @@ export const FavoritesPage: React.FC = () => {
         <Typography>Favorites</Typography>
       </Breadcrumbs>
 
-      {isLoading && <Loader />}
+      {isLoading && Boolean(favoriteItems.length) && <Loader />}
 
       {!isLoading && products.length ? (
         <div className="favorites">

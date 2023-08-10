@@ -3,16 +3,18 @@ import './SearchBar.scss';
 import debounce from 'lodash/debounce';
 import { useFetchData } from '../../hooks/useFetchData';
 import { Product } from '../../types/Product';
+import { Link } from 'react-router-dom';
 
 export const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  console.log(searchQuery);
   const [showDropdown, setShowDropdown] = useState(false);
   const { data: products } = useFetchData<Product>('products', searchQuery);
 
   const debouncedApplyQuery = useCallback(
     debounce((query: string) => {
-      setSearchQuery(`?search=${searchTerm.trim().split(' ').join(',')}`);
+      setSearchQuery(`?search=${query.trim().split(' ').join(',')}`);
       setShowDropdown(query.length > 0);
     }, 1500),
     []
@@ -24,7 +26,8 @@ export const SearchBar: React.FC = () => {
   };
 
   const handleOnBLur = () => {
-    setShowDropdown(false);
+    // setShowDropdown(false);
+    setTimeout(() => setShowDropdown(false), 500);
   };
 
   return (
@@ -41,20 +44,27 @@ export const SearchBar: React.FC = () => {
       {showDropdown && searchTerm.length > 0 && (
         <ul className="search__results">
           {products.map((product, index) => (
-            <li key={index} className="search__result">
-              {product.name}
-            </li>
+            <Link
+              to={`/${product.category}/${product.itemId}`}
+              key={index}>
+              <li className="search__result">
+                {product.name}
+              </li>
+            </Link>
           ))}
         </ul>
-      )}
+      )
+      }
 
-      {showDropdown && products.length === 0 && (
-        <ul className="search__results">
-          <li className="search__no-results" data-visible="true">
-            No matching results
-          </li>
-        </ul>
-      )}
-    </div>
+      {
+        showDropdown && products.length === 0 && (
+          <ul className="search__results">
+            <li className="search__no-results" data-visible="true">
+              No matching results
+            </li>
+          </ul>
+        )
+      }
+    </div >
   );
 };
