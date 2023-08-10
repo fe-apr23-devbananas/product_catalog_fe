@@ -2,7 +2,7 @@ import React from 'react';
 import './HomeSlider.scss';
 import Banner1 from '../../assets/banner.png';
 import Banner2 from '../../assets/banner2.png';
-import Banner3 from '../../assets/banner3.png';
+import Banner3 from '../../assets/banner3.jpg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import { Link } from 'react-router-dom';

@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import Select, { SingleValue } from 'react-select';
 import './SelectSection.scss';
-import { colorStyles } from '../../helpers/colorStyles';
+import { colorStyles1 } from '../../helpers/colorStyles';
+import { colorStyles2 } from '../../helpers/colorStyles';
 
 export type OptionType = {
   value: string;
@@ -47,7 +48,8 @@ export const SelectSection: FC<Props> = ({
               }}
               isMulti={false}
               options={sortByOptions}
-              styles={colorStyles}
+              isSearchable={false}
+              styles={colorStyles1}
             />
           </div>
           <div className="select__sort">
@@ -59,7 +61,8 @@ export const SelectSection: FC<Props> = ({
               }}
               isMulti={false}
               options={perPageOptions}
-              styles={colorStyles}
+              isSearchable={false}
+              styles={colorStyles2}
             />
           </div>
         </div>
