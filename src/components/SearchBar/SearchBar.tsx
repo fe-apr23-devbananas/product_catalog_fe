@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 export const SearchBar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  console.log(searchQuery);
   const [showDropdown, setShowDropdown] = useState(false);
   const { data: products } = useFetchData<Product>('products', searchQuery);
 

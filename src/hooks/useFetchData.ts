@@ -43,7 +43,6 @@ export const getItemById = async (phoneSlug: string, categoryName: string) => {
       throw new Error('Failed to fetch phone data.');
     }
     const data = await response.json();
-    console.log(data);
     return data as ProductDetails;
   } catch (error) {
     console.error('Error fetching phone data:', error);

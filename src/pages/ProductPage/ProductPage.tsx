@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ProductPage.scss';
 import '../../components/Card/Card.scss';
 import './ProductSlider.scss';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import Slider from 'react-slick';
 import { Buttons } from '../../components/Buttons/Buttons';
@@ -18,29 +18,26 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductItem: React.FC = () => {
   const { productSlug } = useParams();
+  const navigate = useNavigate();
   const [currentPhone, setCurrentPhone] = useState<ProductDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [images, setImages] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
-  const { isLoading: isLoadingRecommendations, data: recommendedItems } =
-    useGetRecommendedItems('phones', productSlug as string);
-
   const location = useLocation();
   const categoryName = location.pathname.split('/')[1];
-
+  const { isLoading: isLoadingRecommendations, data: recommendedItems } =
+    useGetRecommendedItems(categoryName, productSlug as string);
   const loadItem = (productSlug: string | undefined) => {
     setIsLoading(true);
     fetch(
       `https://devbananas-products-api.onrender.com/${categoryName}/${productSlug}`
     )
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((loadedItem) => {
         if (loadedItem) {
-          console.log(loadedItem);
           setCurrentPhone(loadedItem);
           setImages(loadedItem.images);
           setSelectedCapacity(loadedItem.capacity);
@@ -57,12 +54,6 @@ export const ProductItem: React.FC = () => {
     loadItem(productSlug);
   }, [productSlug]);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  console.log(currentPhone);
-
   const handleColorButtonClick = (color: string) => {
     setSelectedColor(color);
     const newPhoneSlug = [currentPhone?.namespaceId, selectedCapacity, color]
@@ -70,6 +61,7 @@ export const ProductItem: React.FC = () => {
       .toLowerCase();
 
     loadItem(newPhoneSlug);
+    navigate(`/${categoryName}/${newPhoneSlug}`);
   };
 
   const handleCapacityButtonClick = (capacity: string) => {
@@ -79,6 +71,7 @@ export const ProductItem: React.FC = () => {
       .toLowerCase();
 
     loadItem(newPhoneSlug);
+    navigate(`/${categoryName}/${newPhoneSlug}`);
   };
 
   const hostName = 'https://devbananas-products-api.onrender.com/';
