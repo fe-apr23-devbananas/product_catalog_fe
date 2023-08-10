@@ -14,13 +14,13 @@ export const ProductCarousel: React.FC<Props> = ({ title, products }) => {
 
   const handlePrevClick = () => {
     if (listRef.current) {
-      listRef.current.scrollLeft -= 250;
+      listRef.current.scrollLeft -= 286;
     }
   };
 
   const handleNextClick = () => {
     if (listRef.current) {
-      listRef.current.scrollLeft += 250;
+      listRef.current.scrollLeft += 286;
     }
   };
 
