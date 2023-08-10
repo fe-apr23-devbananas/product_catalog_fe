@@ -28,8 +28,6 @@ export const ProductItem: React.FC = () => {
   const categoryName = location.pathname.split('/')[1];
   const { isLoading: isLoadingRecommendations, data: recommendedItems } =
     useGetRecommendedItems(categoryName, productSlug as string);
-
-
   const loadItem = (productSlug: string | undefined) => {
     setIsLoading(true);
     fetch(
