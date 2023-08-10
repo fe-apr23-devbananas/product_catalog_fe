@@ -12,6 +12,7 @@ import Cart from '../../assets/icons/shoppingCart.svg';
 import Auth from '../../assets/icons/Auth.svg';
 
 import { PageNavLink } from './PageNavLink';
+import { SearchBar } from '../SearchBar';
 
 const navigationItems = [
   { to: '/', text: 'Home' },
@@ -48,6 +49,10 @@ export const Header: React.FC = () => {
           </Link>
 
           <MainNavigation isBurgerMenuOpen={isBurgerMenuOpen} />
+
+          <div className="header__search">
+            <SearchBar />
+          </div>
 
           <div className="header__icons">
             <HeaderButton type="fav" />
