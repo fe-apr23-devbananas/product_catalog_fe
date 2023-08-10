@@ -8,6 +8,7 @@ import { NotFoundRedirect } from './pages/NotFoundPage/NotFoundRedirect';
 import { FavoritesPage } from './pages/FavoritesPage/Favorites';
 import { CartPage } from './pages/CartPage/CartPage';
 import { ProductItem } from './pages/ProductPage';
+import { AuthPage } from './pages/AuthPage/AuthPage';
 
 export const App = () => {
   return (
@@ -30,6 +31,7 @@ export const App = () => {
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="not-found" element={<NotFoundPage />} />
+          <Route path="authorization" element={<AuthPage />} /> {/* TEST AUTH */}
           <Route path="*" element={<NotFoundRedirect />} />
         </Route>
       </Routes>

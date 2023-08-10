@@ -9,6 +9,7 @@ import './BurgerMenu.scss';
 import Logo from '../../assets/icons/Logo.svg';
 import Favs from '../../assets/icons/Favourites.svg';
 import Cart from '../../assets/icons/shoppingCart.svg';
+import Auth from '../../assets/icons/Auth.svg';
 
 import { PageNavLink } from './PageNavLink';
 
@@ -51,6 +52,7 @@ export const Header: React.FC = () => {
           <div className="header__icons">
             <HeaderButton type="fav" />
             <HeaderButton type="cart" />
+            <HeaderButton type="auth" /> {/* TEST AUTH */}
             <button
               type="button"
               className={cn('header__button', 'header__button--burger', {
@@ -100,6 +102,25 @@ export const Header: React.FC = () => {
                   className="header__button--image"
                 />
               </NavLink>
+
+              {/* TEST AUTH */}
+              <NavLink
+                to={'/authorization'}
+                className={({ isActive }) =>
+                  cn('header__button', 'burger-menu__bottom-button', {
+                    'burger-menu__bottom-button--active': isActive
+                  })
+                }
+                onClick={handleBurgerMenuClick}
+              >
+                <img
+                  src={Auth}
+                  alt="button"
+                  className="header__button--image"
+                />
+              </NavLink>
+              {/* TEST AUTH */}
+
               <NavLink
                 to={'/cart'}
                 className={({ isActive }) =>
