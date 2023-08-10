@@ -10,6 +10,8 @@ import { ProductDetails } from '../../types/ProductDetails';
 export const Categories: React.FC = () => {
   const { count: countPhones } = useFetchData<ProductDetails>();
   const { count: countTablets } = useFetchData<ProductDetails>('tablets');
+  const { count: countAccessories } = useFetchData<ProductDetails>('accessories');
+
 
   return (
     <>
@@ -34,7 +36,7 @@ export const Categories: React.FC = () => {
               path="/accessories"
               img={catImgAccessories}
               title="Accessories"
-              quantity={0}
+              quantity={countAccessories}
             />
           </div>
         </div>

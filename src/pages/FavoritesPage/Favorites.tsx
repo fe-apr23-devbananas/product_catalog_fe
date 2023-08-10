@@ -10,11 +10,12 @@ import { Link } from 'react-router-dom';
 import emptyFav from '../../assets/icons/emptyFav.png';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Loader } from '../../components/Loader';
 
 export const FavoritesPage: React.FC = () => {
   const favoriteItems = useAppSelector(selectFavorites);
   const queryString = `?id=${favoriteItems.map((item) => item.id)}`;
-  const { data: products } = useFetchData<Product>('products', queryString);
+  const { isLoading, data: products } = useFetchData<Product>('products', queryString);
 
   return (
     <>
@@ -22,7 +23,11 @@ export const FavoritesPage: React.FC = () => {
         <Typography>Favorites</Typography>
       </Breadcrumbs>
 
-      {products.length ? (
+      {isLoading && (
+        <Loader />
+      )}
+
+      {!isLoading && products.length ? (
         <div className="favorites">
           {/* <a href="#" className="favorites__link">
             Back
