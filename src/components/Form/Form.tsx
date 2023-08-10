@@ -1,4 +1,11 @@
-import React, { ChangeEvent, Dispatch, FC, FormEvent, SetStateAction, useState } from 'react';
+import React, {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  FormEvent,
+  SetStateAction,
+  useState
+} from 'react';
 import cn from 'classnames';
 import './Form.scss';
 
@@ -34,7 +41,7 @@ export const Form: FC<Props> = ({ registration, setRegistration }) => {
     console.log('Form submitted:', formData);
     clearForm();
   };
-  
+
   const handleRegistrChange = () => {
     setRegistration((prev) => !prev);
   };
@@ -70,21 +77,15 @@ export const Form: FC<Props> = ({ registration, setRegistration }) => {
           />
         </label>
         <button className="form__button" type="submit">
-          {registration
-            ? 'Create account'
-            : 'Sign In'
-          }
+          {registration ? 'Create account' : 'Sign In'}
         </button>
 
-        <button 
-          type='button'
+        <button
+          type="button"
           className="form__button--switcher"
           onClick={handleRegistrChange}
         >
-          {registration
-            ? 'Sign In'
-            : 'Create account'
-          }
+          {registration ? 'Sign In' : 'Create account'}
         </button>
       </form>
     </div>

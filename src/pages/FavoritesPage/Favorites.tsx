@@ -13,7 +13,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const FavoritesPage: React.FC = () => {
   const favoriteItems = useAppSelector(selectFavorites);
-  const queryString = `?id=${favoriteItems.map(item => item.id)}`;
+  const queryString = `?id=${favoriteItems.map((item) => item.id)}`;
   const { data: products } = useFetchData<Product>('products', queryString);
 
   return (

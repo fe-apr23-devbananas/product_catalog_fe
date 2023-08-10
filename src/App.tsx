@@ -31,7 +31,8 @@ export const App = () => {
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="not-found" element={<NotFoundPage />} />
-          <Route path="authorization" element={<AuthPage />} /> {/* TEST AUTH */}
+          <Route path="authorization" element={<AuthPage />} />{' '}
+          {/* TEST AUTH */}
           <Route path="*" element={<NotFoundRedirect />} />
         </Route>
       </Routes>

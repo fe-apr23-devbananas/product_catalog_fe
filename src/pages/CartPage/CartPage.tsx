@@ -14,7 +14,7 @@ import cart from '../../assets/icons/purchaseIcon.png';
 export const CartPage = () => {
   const [isModal, setIsModal] = useState(false);
   const cartItems = useAppSelector(selectCart);
-  const queryString = `?id=${cartItems.map(item => item.id)}`;
+  const queryString = `?id=${cartItems.map((item) => item.id)}`;
   const { data: products } = useFetchData<Product>('products', queryString);
 
   const totalQuantity = cartItems.reduce(
