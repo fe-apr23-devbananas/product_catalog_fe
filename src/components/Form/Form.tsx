@@ -1,8 +1,13 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
+import React, { ChangeEvent, Dispatch, FC, FormEvent, SetStateAction, useState } from 'react';
 import cn from 'classnames';
 import './Form.scss';
 
-export const Form: FC = () => {
+interface Props {
+  registration: boolean;
+  setRegistration: Dispatch<SetStateAction<boolean>>;
+}
+
+export const Form: FC<Props> = ({ registration, setRegistration }) => {
   const [formData, setFormData] = useState({
     name: '',
     password: ''
@@ -20,7 +25,7 @@ export const Form: FC = () => {
 
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value.trim()
     }));
   };
 
@@ -29,10 +34,16 @@ export const Form: FC = () => {
     console.log('Form submitted:', formData);
     clearForm();
   };
+  
+  const handleRegistrChange = () => {
+    setRegistration((prev) => !prev);
+  };
 
   return (
     <div className="form">
-      <h2 className="form__title">Sign in to NICE &#128076; GADGETS</h2>
+      <h2 className="form__title">
+        {registration ? 'Create your account' : 'Sign in to NICE GADGETS'}
+      </h2>
 
       <form className="form__form" onSubmit={handleSubmit}>
         <label className="form__label">
@@ -59,7 +70,21 @@ export const Form: FC = () => {
           />
         </label>
         <button className="form__button" type="submit">
-          Sign in
+          {registration
+            ? 'Create account'
+            : 'Sign In'
+          }
+        </button>
+
+        <button 
+          type='button'
+          className="form__button--switcher"
+          onClick={handleRegistrChange}
+        >
+          {registration
+            ? 'Sign In'
+            : 'Create account'
+          }
         </button>
       </form>
     </div>

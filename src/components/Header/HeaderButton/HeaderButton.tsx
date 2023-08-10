@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import Fav from '../../../assets/icons/Favourites.svg';
 import Cart from '../../../assets/icons/shoppingCart.svg';
+import Auth from '../../../assets/icons/Auth.svg';
 import { Counter } from '../Counter/Counter';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 import { selectCart } from '../../../features/cart/cartSlice';
@@ -16,6 +17,9 @@ const prepareLink = (type: string) => {
   switch (type) {
   case 'fav':
     return ['/favorites', Fav];
+
+  case 'auth':
+    return ['/authorization', Auth]; // TEST AUTH
 
   default:
     return ['/cart', Cart];
@@ -43,7 +47,8 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
           'header__button',
           { 'header__button--active': isActive },
           { 'header__button--fav': type === 'fav' },
-          { 'header__button--cart': type === 'cart' }
+          { 'header__button--cart': type === 'cart' },
+          { 'header__button--auth': type === 'auth' } // TEST AUTH
         )
       }
       onClick={handleClick}

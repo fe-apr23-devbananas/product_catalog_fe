@@ -114,6 +114,16 @@
         display: flex;
       }
     }
+    
+// TEST AUTH START
+    &--auth {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+    }
+// TEST AUTH END
 
     &--image {
       height: 16px;
