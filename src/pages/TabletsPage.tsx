@@ -1,18 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { ProductList } from '../components/ProductList/ProductList';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
-//TEST!!!!!!
-
 export const TabletsPage: FC = () => {
   return (
-    <>
+    <main>
       <Breadcrumbs>
         <Typography>Tablets</Typography>
       </Breadcrumbs>
-      <ProductList />;
-    </>
+      <ProductList productType={'tablets'} title={'Tablets'} />
+    </main>
   );
 };
