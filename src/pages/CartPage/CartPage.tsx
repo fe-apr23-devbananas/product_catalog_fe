@@ -42,7 +42,7 @@ export const CartPage = () => {
         <Typography>Favorites</Typography>
       </Breadcrumbs>
 
-      {isLoading && <Loader />}
+      {isLoading && Boolean(cartItems.length) && <Loader />}
 
       {cartItems.length ? (
         <div className="cart">
