@@ -13,19 +13,16 @@ import cart from '../../assets/icons/purchaseIcon.png';
 
 export const CartPage = () => {
   const [isModal, setIsModal] = useState(false);
-  const { data: phones } = useFetchData<Product>();
-
   const cartItems = useAppSelector(selectCart);
+  const queryString = `?id=${cartItems.map(item => item.id)}`;
+  const { data: products } = useFetchData<Product>('products', queryString);
+
   const totalQuantity = cartItems.reduce(
     (total, item) => total + item.amount,
     0
   );
 
-  const filteredItems = phones.filter((phone) =>
-    cartItems.some((item) => item.id === phone.itemId)
-  );
-
-  const totalCost = filteredItems.reduce((accumulator, item) => {
+  const totalCost = products.reduce((accumulator, item) => {
     const cartItem = cartItems.find((cartItem) => cartItem.id === item.itemId);
     if (cartItem) {
       return accumulator + item.price * cartItem.amount;
@@ -44,7 +41,7 @@ export const CartPage = () => {
       <div className="cart__wrapper">
         <div className="cart__items">
           <div className="cart__item">
-            {filteredItems.map((item) => (
+            {products.map((item) => (
               <CartItem key={item.id} item={item} />
             ))}
           </div>

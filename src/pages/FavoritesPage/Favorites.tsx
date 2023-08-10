@@ -12,20 +12,17 @@ import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const FavoritesPage: React.FC = () => {
-  const { data: phones } = useFetchData<Product>();
-
   const favoriteItems = useAppSelector(selectFavorites);
+  const queryString = `?id=${favoriteItems.map(item => item.id)}`;
+  const { data: products } = useFetchData<Product>('products', queryString);
 
-  const filteredItems = phones.filter((phone) =>
-    favoriteItems.some((item) => item.id === phone.itemId)
-  );
   return (
     <>
       <Breadcrumbs>
         <Typography>Favorites</Typography>
       </Breadcrumbs>
 
-      {filteredItems.length ? (
+      {products.length ? (
         <div className="favorites">
           {/* <a href="#" className="favorites__link">
             Back
@@ -33,13 +30,13 @@ export const FavoritesPage: React.FC = () => {
 
           <h1 className="favorites__title">Favorites</h1>
           <p className="favorites__quantity">
-            {filteredItems.length === 1
-              ? `${filteredItems.length} item`
-              : `${filteredItems.length} items`}
+            {products.length === 1
+              ? `${products.length} item`
+              : `${products.length} items`}
           </p>
 
           <div className="favorites__wrapper">
-            <Catalog products={filteredItems} />
+            <Catalog products={products} />
           </div>
         </div>
       ) : (

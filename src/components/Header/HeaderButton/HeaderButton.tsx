@@ -15,14 +15,14 @@ type Props = {
 
 const prepareLink = (type: string) => {
   switch (type) {
-  case 'fav':
-    return ['/favorites', Fav];
+    case 'fav':
+      return ['/favorites', Fav];
 
-  case 'auth':
-    return ['/authorization', Auth]; // TEST AUTH
+    case 'auth':
+      return ['/authorization', Auth]; // TEST AUTH
 
-  default:
-    return ['/cart', Cart];
+    default:
+      return ['/cart', Cart];
   }
 };
 
@@ -59,7 +59,7 @@ export const HeaderButton: React.FC<Props> = ({ type }) => {
         className={cn('header__button--image', { clicked: isClicked })}
       />
 
-      <Counter amount={storageItems.length} />
+      {type !== 'auth' && <Counter amount={storageItems.length} />}
     </NavLink>
   );
 };
