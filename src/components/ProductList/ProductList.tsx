@@ -92,7 +92,7 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
   return (
     <section>
       <div className="productList__title">{title}</div>
-      <div className="productList__total-models">{count} model(s)</div>
+      <div className="productList__total-models">{count} models</div>
       <SelectSection
         selectedPerPage={{
           value: queryParams.limit,
