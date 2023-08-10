@@ -17,22 +17,22 @@ import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductItem: React.FC = () => {
-  const { phoneSlug } = useParams();
+  const { productSlug } = useParams();
   const [currentPhone, setCurrentPhone] = useState<ProductDetails | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [images, setImages] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
   const { isLoading: isLoadingRecommendations, data: recommendedItems } =
-    useGetRecommendedItems('phones', phoneSlug as string);
+    useGetRecommendedItems('phones', productSlug as string);
 
   const location = useLocation();
   const categoryName = location.pathname.split('/')[1];
 
-  const loadItem = (phoneSlug: string | undefined) => {
+  const loadItem = (productSlug: string | undefined) => {
     setIsLoading(true);
     fetch(
-      `https://devbananas-products-api.onrender.com/${categoryName}/${phoneSlug}`
+      `https://devbananas-products-api.onrender.com/${categoryName}/${productSlug}`
     )
       .then((response) => {
         console.log(response);
@@ -54,8 +54,8 @@ export const ProductItem: React.FC = () => {
   };
 
   useEffect(() => {
-    loadItem(phoneSlug);
-  }, [phoneSlug]);
+    loadItem(productSlug);
+  }, [productSlug]);
 
   if (isLoading) {
     return <p>Loading...</p>;
