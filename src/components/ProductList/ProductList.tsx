@@ -56,7 +56,7 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
     data: phones
   } = useFetchData<Product>(productType, queryString);
 
-  const numberOfPages = count / +queryParams.limit;
+  const numberOfPages = Math.ceil(count / +queryParams.limit);
   const numberOfPagesArray = Array.from({ length: numberOfPages }, (_, i) => i);
 
   const handleChangePage = (event: React.MouseEvent) => {
