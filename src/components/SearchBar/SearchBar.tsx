@@ -26,8 +26,10 @@ export const SearchBar: React.FC = () => {
   };
 
   const handleOnBLur = () => {
-    // setShowDropdown(false);
-    setTimeout(() => setShowDropdown(false), 500);
+    setTimeout(() => {
+      setShowDropdown(false);
+      setSearchTerm('');
+    }, 500);
   };
 
   return (
