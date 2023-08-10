@@ -18,7 +18,10 @@ export const CartPage = () => {
   const [isModal, setIsModal] = useState(false);
   const cartItems = useAppSelector(selectCart);
   const queryString = `?id=${cartItems.map((item) => item.id)}`;
-  const { isLoading, data: products } = useFetchData<Product>('products', queryString);
+  const { isLoading, data: products } = useFetchData<Product>(
+    'products',
+    queryString
+  );
 
   const totalQuantity = cartItems.reduce(
     (total, item) => total + item.amount,
@@ -39,9 +42,7 @@ export const CartPage = () => {
         <Typography>Favorites</Typography>
       </Breadcrumbs>
 
-      {isLoading && (
-        <Loader />
-      )}
+      {isLoading && <Loader />}
 
       {cartItems.length ? (
         <div className="cart">
@@ -84,7 +85,6 @@ export const CartPage = () => {
           </Link>
         </div>
       )}
-
     </>
   );
 };

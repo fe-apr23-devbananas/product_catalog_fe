@@ -10,8 +10,8 @@ import { ProductDetails } from '../../types/ProductDetails';
 export const Categories: React.FC = () => {
   const { count: countPhones } = useFetchData<ProductDetails>();
   const { count: countTablets } = useFetchData<ProductDetails>('tablets');
-  const { count: countAccessories } = useFetchData<ProductDetails>('accessories');
-
+  const { count: countAccessories } =
+    useFetchData<ProductDetails>('accessories');
 
   return (
     <>

@@ -15,7 +15,10 @@ import { Loader } from '../../components/Loader';
 export const FavoritesPage: React.FC = () => {
   const favoriteItems = useAppSelector(selectFavorites);
   const queryString = `?id=${favoriteItems.map((item) => item.id)}`;
-  const { isLoading, data: products } = useFetchData<Product>('products', queryString);
+  const { isLoading, data: products } = useFetchData<Product>(
+    'products',
+    queryString
+  );
 
   return (
     <>
@@ -23,9 +26,7 @@ export const FavoritesPage: React.FC = () => {
         <Typography>Favorites</Typography>
       </Breadcrumbs>
 
-      {isLoading && (
-        <Loader />
-      )}
+      {isLoading && <Loader />}
 
       {!isLoading && products.length ? (
         <div className="favorites">
