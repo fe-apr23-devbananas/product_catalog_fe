@@ -10,6 +10,15 @@
 .header {
   font-family: 'Mont-Bold', sans-serif;
 
+  &__search {
+    display: none;
+
+    @include onDesktop {
+      display: block;
+      margin-right: 24px;
+    }
+  }
+
   &--burger-open {
     position: fixed;
     z-index: 999;
