@@ -37,11 +37,11 @@ export const ContactsPage: React.FC = () => {
       name: 'Mykola Maik',
       linkedIn: 'https://www.linkedin.com/in/maik-mykola-983b90282/'
     },
-    {
-      photo: 'https://avatars.githubusercontent.com/u/127655844?v=4',
-      name: 'Kateryna Zaremska',
-      linkedIn: 'xd'
-    }
+    // {
+    //   photo: 'https://avatars.githubusercontent.com/u/127655844?v=4',
+    //   name: 'Kateryna Zaremska',
+    //   linkedIn: 'xd'
+    // }
   ];
 
   return (
@@ -51,8 +51,8 @@ export const ContactsPage: React.FC = () => {
       </Breadcrumbs>
 
       <div className="text">
-        <h1>The project was worked on by the top Developers.</h1>
-        <h2>Inform you that each of us is in search of employment!</h2>
+        <h2 className="heading-text">The project was worked on by the top Developers.</h2>
+        <h2 className="subheading-text">Inform you that each of us is in search of employment!</h2>
         <p>
           Our team consists of creative and self motivated full-stack developers
           who have created this service. You can contact any of us using links

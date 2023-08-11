@@ -13,11 +13,12 @@ import cn from 'classnames';
 import cart from '../../assets/icons/purchaseIcon.png';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import Typography from '@mui/material/Typography';
+import { CartItem as CartItemType } from '../../types/CartItem';
 
 export const CartPage = () => {
   const [isModal, setIsModal] = useState(false);
   const cartItems = useAppSelector(selectCart);
-  const queryString = `?id=${cartItems.map((item) => item.id)}`;
+  const queryString = `?id=${cartItems.map((item: CartItemType) => item.id)}`;
   const { isLoading, data: products } = useFetchData<Product>(
     'products',
     queryString

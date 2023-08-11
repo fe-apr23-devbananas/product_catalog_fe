@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Typography } from '@mui/material';
 import './RightsPage.scss';
 import gif from '../../assets/giphy.gif';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export const RightsPage: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      window.open('https://creativecommons.org/licenses/by/4.0/', '_blank');
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     window.open('https://creativecommons.org/licenses/by/4.0/', '_blank');
 
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
-    }, 1000);
+  //     setTimeout(() => {
+  //       navigate('/');
+  //     }, 1000);
+  //   }, 1000);
 
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  //   return () => clearTimeout(timer);
+  // }, [navigate]);
 
   return (
     <>

@@ -44,6 +44,7 @@
       width: 32px;
       height: 32px;
       padding: 2px;
+      cursor: pointer;
 
       &:not(:last-child) {
         margin-right: 8px;
@@ -92,6 +93,11 @@
       width: 60px;
       border: 1px solid $icons-color;
       border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $primary-color;
+      }
 
       &:not(:last-child) {
         margin-right: 8px;
@@ -134,6 +140,7 @@
   }
 
   &__buy {
+    
     margin-bottom: 32px;
   }
 

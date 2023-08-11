@@ -9,7 +9,7 @@ import './BurgerMenu.scss';
 import Logo from '../../assets/icons/Logo.svg';
 import Favs from '../../assets/icons/Favourites.svg';
 import Cart from '../../assets/icons/shoppingCart.svg';
-import Auth from '../../assets/icons/Auth.svg';
+// import Auth from '../../assets/icons/Auth.svg';
 
 import { PageNavLink } from './PageNavLink';
 import { SearchBar } from '../SearchBar';
@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
           <div className="header__icons">
             <HeaderButton type="fav" />
             <HeaderButton type="cart" />
-            <HeaderButton type="auth" /> {/* TEST AUTH */}
+            {/* <HeaderButton type="auth" /> */}
             <button
               type="button"
               className={cn('header__button', 'header__button--burger', {
@@ -109,7 +109,7 @@ export const Header: React.FC = () => {
               </NavLink>
 
               {/* TEST AUTH */}
-              <NavLink
+              {/* <NavLink
                 to={'/authorization'}
                 className={({ isActive }) =>
                   cn('header__button', 'burger-menu__bottom-button', {
@@ -123,7 +123,7 @@ export const Header: React.FC = () => {
                   alt="button"
                   className="header__button--image"
                 />
-              </NavLink>
+              </NavLink> */}
               {/* TEST AUTH */}
 
               <NavLink

@@ -55,8 +55,9 @@ export const ProductItem: React.FC = () => {
   }, [productSlug]);
 
   const handleColorButtonClick = (color: string) => {
-    setSelectedColor(color);
-    const newPhoneSlug = [currentPhone?.namespaceId, selectedCapacity, color]
+    const colorId = color.split(' ').join('-');
+    setSelectedColor(colorId);
+    const newPhoneSlug = [currentPhone?.namespaceId, selectedCapacity, colorId]
       .join('-')
       .toLowerCase();
 
