@@ -76,7 +76,7 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
     setQuery({
       offset,
       sortBy: queryParams.sortBy,
-      limit: queryParams.limit,
+      limit: queryParams.limit
     });
   };
 
