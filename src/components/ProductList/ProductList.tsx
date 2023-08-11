@@ -81,7 +81,7 @@ export const ProductList: FC<Props> = ({ productType, title }) => {
   const handleChangeLimit = (lim: string) => {
     setQuery({
       limit: lim,
-      sortBy: queryParams.sortBy,
+      sortBy: queryParams.sortBy
     });
   };
   const handleChangeSortBy = (sort: string) => {
