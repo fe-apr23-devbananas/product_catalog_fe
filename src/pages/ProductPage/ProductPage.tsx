@@ -18,7 +18,9 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 export const ProductItem: React.FC = () => {
   const { productSlug } = useParams();
   const navigate = useNavigate();
-  const [currentProduct, setCurrentProduct] = useState<ProductDetails | null>(null);
+  const [currentProduct, setCurrentProduct] = useState<ProductDetails | null>(
+    null
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [images, setImages] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState('');
@@ -56,7 +58,11 @@ export const ProductItem: React.FC = () => {
   const handleColorButtonClick = (color: string) => {
     const colorId = color.split(' ').join('-');
     setSelectedColor(colorId);
-    const newPhoneSlug = [currentProduct?.namespaceId, selectedCapacity, colorId]
+    const newPhoneSlug = [
+      currentProduct?.namespaceId,
+      selectedCapacity,
+      colorId
+    ]
       .join('-')
       .toLowerCase();
 
@@ -115,7 +121,9 @@ export const ProductItem: React.FC = () => {
           </Typography>
         </Link>
         {currentProduct ? (
-          <Typography className="product__name">{currentProduct.name}</Typography>
+          <Typography className="product__name">
+            {currentProduct.name}
+          </Typography>
         ) : (
           ' '
         )}
@@ -216,7 +224,9 @@ export const ProductItem: React.FC = () => {
                 </li>
                 <li className="card__description">
                   <p className="card__description-left">RAM</p>
-                  <p className="card__description-right">{currentProduct.ram}</p>
+                  <p className="card__description-right">
+                    {currentProduct.ram}
+                  </p>
                 </li>
               </ul>
             </div>
@@ -229,7 +239,11 @@ export const ProductItem: React.FC = () => {
           </div>
 
           <div className="grid__item--tablet--1-12 grid__item--desktop--14-24">
-            {<ProductTechSpecs specs={getSpecsFromProductData(currentProduct)} />}
+            {
+              <ProductTechSpecs
+                specs={getSpecsFromProductData(currentProduct)}
+              />
+            }
           </div>
           <div className="grid__item--tablet--1-12 grid__item--desktop--1-24">
             {isLoadingRecommendations ? (
