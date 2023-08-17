@@ -14,6 +14,7 @@ import { ProductCarousel } from '../../components/ProductCarousel';
 import { useGetRecommendedItems } from '../../hooks/useFetchData';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
 
 export const ProductItem: React.FC = () => {
   const { productSlug } = useParams();
@@ -128,9 +129,9 @@ export const ProductItem: React.FC = () => {
           ' '
         )}
       </Breadcrumbs>
-      <a href={`/${categoryName}`} className="favorites__link">
-        Back
-      </a>
+
+      <GoBackButton categoryDirectory={categoryName} />
+
       <div className="product">
         <h2 className="product__title">{currentProduct.name}</h2>
         <div className="grid">
