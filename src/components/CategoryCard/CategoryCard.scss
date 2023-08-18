@@ -27,6 +27,7 @@
 
       &-image {
         transition: transform 0.5s ease-in-out;
+        width: 100%;
         &:hover {
           transform: scale(1.1);
           border-radius: 8px;
